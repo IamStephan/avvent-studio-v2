@@ -1,0 +1,35 @@
+// COLORS
+$primary: #4DB2DD;
+$primaryDark: #287CA6;
+$primaryLight: #66D4F2;
+
+$secondary: #DD784D;
+
+$light: #ffffff;
+$dark: #282828;
+
+// SPACING
+$margin: 7;
+$padding: 7;
+
+// BORDERS
+$borderRadius: 10;
+
+:export {
+    // COLORS
+    primary: $primary;
+    primaryDark: $primaryDark;
+    primaryLight: $primaryLight;
+
+    secondary: $secondary;
+
+    light: $light;
+    dark: $dark;
+
+    // SPACING
+    margin: $margin;
+    padding: $padding;
+
+    // BORDERS
+    borderRadius: $borderRadius;
+}

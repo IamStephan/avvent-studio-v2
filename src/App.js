@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
+import { Provider as StoreProvider } from 'mobx-react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ScrollToTop from './components/scrollToTop/scrollToTop';
+import Navbar from './components/navbar/navbar';
+import Footer from './components/footer/footer';
+
+import AppStore from './stores/appStore'
+
+const stores = {
+  AppStore
+}
+
+const Home = Loadable({
+  loader: () => import('./pages/home/home'),
+  loading: () => (<div>Loading</div>)
+})
+
+
+class App extends Component {
+  render() {
+    return (
+      <Fragment>
+        <StoreProvider {...stores}>
+        <Router>
+          <ScrollToTop />
+          <Navbar />
+          <Switch>
+            <Route component={Home} exact path='/' />
+          </Switch>
+          <Footer />
+        </Router>
+      </StoreProvider>
+      </Fragment>
+    )
+  }
 }
 
 export default App;

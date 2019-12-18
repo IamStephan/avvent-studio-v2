@@ -1,0 +1,228 @@
+@import '../../utils/globals.scss';
+
+$loaderSize: 24;
+$loaderBorder: 4;
+
+$animMs: 750;
+
+@keyframes loader {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin loading($color, $variant) {
+    color: transparent;
+    cursor: not-allowed;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: calc(50% - #{$loaderSize / 2}px);
+        left: calc(50% - #{$loaderSize / 2}px);
+        height: #{$loaderSize}px;
+        width: #{$loaderSize}px;
+        border-radius: 50%;
+        animation: loader #{$animMs}ms ease-in-out infinite;
+
+        @if $variant == 'contained' {
+            border: #{$loaderBorder}px solid $light;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        } @else {
+            border: #{$loaderBorder}px solid $color;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+    }
+}
+
+@mixin active($color, $variant) {
+    @if $variant == 'contained' {
+        &:hover {
+            background-color: darken($color, 5%);
+        }
+    
+        &:active {
+            background-color: darken($color, 10%);
+        }
+    } @else {
+        &:hover {
+            background-color: rgba($color, 0.1);
+        }
+    
+        &:active {
+            background-color: rgba($color, 0.2);
+        }
+    } 
+}
+
+@mixin disabled($color, $variant) {
+    cursor: not-allowed;
+
+    @if $variant == 'contained' {
+        background-color: darken($color, 10%);
+    } @else {
+        background-color: rgba($color, 0.2);
+    } 
+}
+
+@mixin toggled($color, $variant) {
+    cursor: pointer;
+
+    @if $variant == 'contained' {
+        background-color: darken($color, 5%);
+    
+        &:active {
+            background-color: darken($color, 10%);
+        }
+    } @else {
+        background-color: rgba($color, 0.1);
+    
+        &:active {
+            background-color: rgba($color, 0.2);
+        }
+    }  
+}
+
+@mixin color($color) {
+    &.contained {
+        background-color: $color;
+        border: 1px solid $color;
+
+        @if $color == $light {
+            color: $primary;
+        } @else {
+            color: $light;
+        }
+
+        &.active {
+            @include active($color, 'contained')
+        }
+        
+        &.disabled {
+            @include disabled($color, 'contained')
+        }
+
+        &.loading {
+            @include loading($color, 'contained')
+        }
+
+        &.toggled {
+            @include toggled($color, 'contained')
+        }
+    }
+
+    &.outlined {
+        border: 1px solid $color;
+        color: $color;
+
+        &.active {
+            @include active($color, 'outlined')
+        }
+
+        &.disabled {
+            @include disabled($color, 'outlined')
+        }
+        
+        &.loading {
+            @include loading($color, 'outlined')
+        }
+
+        &.toggled {
+            @include toggled($color, 'outlined')
+        }
+    }
+
+    &.ghost {
+        color: $color;
+        border: 1px solid transparent;
+
+        &.active {
+            @include active($color, 'ghost')
+        }
+
+        &.disabled {
+            @include disabled($color, 'ghost')
+        }
+
+        &.loading {
+            @include loading($color, 'ghost')
+        }
+
+        &.toggled {
+            @include toggled($color, 'ghost')
+        }
+    }
+}
+
+.button {
+    padding: #{$padding}px;
+    padding-left: #{$padding * 2}px;
+    padding-right: #{$padding * 2}px;
+    border-radius: #{$borderRadius}px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    text-transform: uppercase;
+
+    &.primary {
+        @include color($primary)
+    }
+
+    &.dark {
+        @include color($dark)
+    }
+
+    &.light {
+        @include color($light)
+    }
+
+    &.full {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.inline {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.group {
+    &.full {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .button {
+            flex: 1;
+        }
+    }
+
+    &.inline {
+        display: inline-flex;
+    }
+
+    .button {
+        border-radius: 0;
+
+        &:first-child {
+            border-radius: #{$borderRadius}px 0px 0px #{$borderRadius}px;
+        }
+
+        &:last-child {
+            border-radius: 0px #{$borderRadius}px #{$borderRadius}px 0px;
+        }
+
+        &:only-child {
+            border-radius: #{$borderRadius}px;
+        }
+    }
+}

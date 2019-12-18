@@ -1,0 +1,11 @@
+@import '../../utils/globals.scss';
+@import '../navbar/navbar.module.scss';
+
+.section {
+    min-height: 100vh;
+    padding-top: #{$navbarHeight}px;
+
+    &:nth-child(2n) {
+        background-color: $primary;
+    }
+}
