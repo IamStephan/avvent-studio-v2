@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import Proptypes from 'prop-types';
 
 import styles from './navbar.module.scss';
@@ -6,7 +6,7 @@ import styles from './navbar.module.scss';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import Button from '../button/button';
 
-export default class Navbar extends Component {
+export default class Navbar extends PureComponent {
   static propTypes = {
     mode: Proptypes.oneOf(['light', 'primary']).isRequired,
     sectionNum: Proptypes.number.isRequired
@@ -21,17 +21,18 @@ export default class Navbar extends Component {
     super(props)
 
     this.state = {
-      windowWidth: 0,
-      relativeNavPos: 0
+      windowWidth: 0
     }
 
     this.getWindowWidth = this.getWindowWidth.bind(this)
     this.handleScroll = this.handleScroll.bind(this)
+
+    this.nav = React.createRef()
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.getWindowWidth)
-    window.addEventListener('scroll', () => this.handleScroll(this.props.sectionNum))
+    this.handleScroll(this.props.sectionNum)
     
     this.getWindowWidth()
   }
@@ -49,18 +50,20 @@ export default class Navbar extends Component {
     })
   }
 
-  handleScroll(sectionNumber) {
-    this.setState({
-      ...this.state,
-      relativeNavPos: window.scrollY - (sectionNumber * window.innerHeight)
+  handleScroll(sectionNumber, limit) {
+    requestAnimationFrame(() => {
+      this.nav.current.style.top = `${window.scrollY - (sectionNumber * window.innerHeight)}px`
+
+      this.handleScroll(sectionNumber)
     })
   }
 
   render() {
     return (
-      <nav className={`${styles['navbar']} ${styles[this.props.mode]}`} style={{
-        top: `${this.state.relativeNavPos}px`
-      }}>
+      <nav
+        ref={this.nav}
+        className={`${styles['navbar']} ${styles[this.props.mode]}`}
+      >
         <section className={styles['branding']}>
           {
             this.props.mode === 'light' ? (

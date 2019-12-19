@@ -22,7 +22,7 @@ class Group extends Component {
 export default class Button extends Component {
   static propTypes = {
     variant: Proptypes.oneOf(['contained', 'outlined', 'ghost']),
-    color: Proptypes.oneOf(['primary', 'dark']),
+    color: Proptypes.oneOf(['primary', 'dark', 'light']),
     state: Proptypes.oneOf(['active', 'disabled', 'loading', 'toggled']),
     width: Proptypes.oneOf(['full', 'inline'])
   }
