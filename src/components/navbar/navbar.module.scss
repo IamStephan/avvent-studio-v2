@@ -6,15 +6,12 @@ $navbarHeight: 75;
 
 .navbar {
     height: #{$navbarHeight}px;
-    position: absolute;
+    position: sticky;
     top: 0px;
     width: 100%;
-    background-color: $light;
     z-index: 99;
     display: flex;
     justify-content: space-between;
-    will-change: top;
-    transition: top 1ms;
 
     &.light {
         background-color: $light;

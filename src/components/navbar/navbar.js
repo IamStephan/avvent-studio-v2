@@ -32,7 +32,7 @@ export default class Navbar extends PureComponent {
 
   componentDidMount() {
     window.addEventListener('resize', this.getWindowWidth)
-    this.handleScroll(this.props.sectionNum)
+    // this.handleScroll(this.props.sectionNum)
     
     this.getWindowWidth()
   }
@@ -54,7 +54,7 @@ export default class Navbar extends PureComponent {
     requestAnimationFrame(() => {
       this.nav.current.style.top = `${window.scrollY - (sectionNumber * window.innerHeight)}px`
 
-      setTimeout(() => this.handleScroll(sectionNumber), 0) 
+      this.handleScroll(sectionNumber)
     })
   }
 
@@ -97,7 +97,7 @@ export default class Navbar extends PureComponent {
             </section>
           ) : (
             <section className={styles['actions-mobile']}>
-              <Button>
+              <Button color={this.props.mode === 'light' ? 'primary' : 'light'}>
                 <MenuOpenIcon />
               </Button>
             </section>

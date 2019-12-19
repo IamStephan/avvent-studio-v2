@@ -1,13 +1,38 @@
 @import '../../utils/globals.scss';
 @import '../navbar/navbar.module.scss';
 
-.section {
-    min-height: 100vh;
-    padding-top: #{$navbarHeight}px;
-    position: relative;
-    overflow: hidden;
 
-    &:nth-child(2n) {
-        background-color: $primary;
+.page {
+    .section {
+        position: relative;
+        clip-path: inset(0);
+    
+        .section-navbar {
+            position: absolute;
+            height: calc(100% + #{$navbarHeight}px);
+            width: 100%;
+        }
+    
+        .section-content {
+            min-height: 100vh;
+            position: relative;
+        }
+    
+        &:nth-child(2n) {
+            background-color: $primary;
+        }
+    }
+    .section {
+        &:not(:first-child) {
+            .section-navbar {
+                height: calc(100% + #{$navbarHeight * 2}px);
+                top: -75px;
+            }
+        }
+        &:last-child {
+            .section-navbar {
+                height: calc(100% + #{$navbarHeight}px);
+            }
+        }
     }
 }

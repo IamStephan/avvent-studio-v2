@@ -16,7 +16,6 @@ export default class Home extends Component {
         <Page.Section
           className={styles['hero']}
           navbarMode='light'
-          sectionNumber={0}
         >
           <div className={styles['left']}>
             <div className={styles['callout']}>
@@ -46,31 +45,19 @@ export default class Home extends Component {
           </div>
         </Page.Section>
 
-        <Page.Section
-          navbarMode='primary'
-          sectionNumber={1}
-        >
+        <Page.Section navbarMode='primary'>
           
         </Page.Section>
 
-        <Page.Section
-          navbarMode='light'
-          sectionNumber={2}
-        >
+        <Page.Section navbarMode='light'>
           
         </Page.Section>
 
-        <Page.Section
-          navbarMode='primary'
-          sectionNumber={3}
-        >
+        <Page.Section navbarMode='primary'>
           
         </Page.Section>
         
-        <Page.Section
-          navbarMode='light'
-          sectionNumber={4}
-        >
+        <Page.Section navbarMode='light'>
           
         </Page.Section>
       </Page>

@@ -9,9 +9,13 @@ import Navbar from '../navbar/navbar';
 class Section extends Component {
   render() {
     return (
-      <section className={`${styles['section']} ${this.props.className}`}>
-        <Navbar mode={this.props.navbarMode} sectionNum={this.props.sectionNumber} />
-        {this.props.children}
+      <section className={`${styles['section']}`}>
+        <div className={`${styles['section-navbar']}`}>
+          <Navbar mode={this.props.navbarMode} sectionNum={this.props.sectionNumber} />
+        </div>
+        <div className={`${styles['section-content']} ${this.props.className}`}>
+          {this.props.children}
+        </div>
       </section>
     )
   }
@@ -37,7 +41,7 @@ export default class Page extends Component {
           </title>
         </Helmet>
 
-        <div>
+        <div className={styles['page']}>
           {this.props.children}
         </div>
       </Fragment>
