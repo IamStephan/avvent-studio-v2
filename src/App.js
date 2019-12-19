@@ -26,7 +26,6 @@ class App extends Component {
         <StoreProvider {...stores}>
         <Router>
           <ScrollToTop />
-          <Navbar />
           <Switch>
             <Route component={Home} exact path='/' />
           </Switch>

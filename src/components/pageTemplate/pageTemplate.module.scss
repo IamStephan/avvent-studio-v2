@@ -4,6 +4,8 @@
 .section {
     min-height: 100vh;
     padding-top: #{$navbarHeight}px;
+    position: relative;
+    overflow: hidden;
 
     &:nth-child(2n) {
         background-color: $primary;

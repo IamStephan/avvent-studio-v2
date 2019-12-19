@@ -13,18 +13,30 @@ $breakpointOne: 800;
         align-items: center;
         margin: #{$margin * 2}px;
 
-        .heading {
-            margin-bottom: #{$margin}px;
-            text-align: center;
-            font-size: 3em;
+        .callout {
+            position: relative;
+
+            .heading {
+                margin-bottom: #{$margin}px;
+                text-align: center;
+                font-size: 3em;
+            }
+
+            .content {
+                margin-bottom: #{$margin * 4}px;
+                max-width: 400px;
+                text-align: center;
+                font-size: large;
+            }
+
+            .actions {
+                max-width: 400px;
+                display: flex;
+                justify-content: flex-end;
+            }
         }
 
-        .content {
-            margin-bottom: #{$margin * 2}px;
-            max-width: 400px;
-            text-align: center;
-            font-size: large;
-        }
+        
     }
 
     .right {

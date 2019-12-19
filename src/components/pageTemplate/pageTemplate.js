@@ -4,10 +4,13 @@ import { Helmet } from 'react-helmet';
 
 import styles from './pageTemplate.module.scss';
 
+import Navbar from '../navbar/navbar';
+
 class Section extends Component {
   render() {
     return (
       <section className={`${styles['section']} ${this.props.className}`}>
+        <Navbar mode={this.props.navbarMode} sectionNum={this.props.sectionNumber} />
         {this.props.children}
       </section>
     )

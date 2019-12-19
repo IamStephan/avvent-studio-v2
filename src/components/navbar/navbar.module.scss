@@ -6,17 +6,27 @@ $navbarHeight: 75;
 
 .navbar {
     height: #{$navbarHeight}px;
-    position: fixed;
+    position: absolute;
     top: 0px;
     width: 100%;
     background-color: $light;
     z-index: 99;
     display: flex;
     justify-content: space-between;
+    transition: all 0ms;
+
+    &.light {
+        background-color: $light;
+    }
+
+    &.primary {
+        background-color: $primary;
+    }
     
     .branding {
         position: relative;
         padding: #{$padding * 3}px;
+        margin-left: #{$margin * 3}px;
 
         img {
             height: 100%;

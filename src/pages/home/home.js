@@ -13,39 +13,64 @@ export default class Home extends Component {
         title='Avvent Studio: Home'
         description='We are a next generation software development studio'
       >
-        <Page.Section className={styles['hero']}>
+        <Page.Section
+          className={styles['hero']}
+          navbarMode='light'
+          sectionNumber={0}
+        >
           <div className={styles['left']}>
-            <h1 className={styles['heading']}>
-              We Develop
-              <span style={{
-                color: globals.primary
-              }}>
-                .
-              </span>
-            </h1>
-            <p className={styles['content']}>
-              We are a software development studio that can provide you with world-class applications. 
-            </p>
-            <Button>Contact Us</Button>
+            <div className={styles['callout']}>
+              <h1 className={styles['heading']}>
+                We develop
+                <span style={{
+                  color: globals.primary
+                }}>
+                  .
+                </span>
+              </h1>
+
+              <p className={styles['content']}>
+                We are a software development studio that can provide you with world-class applications. With a team motived to only be the best you can be assured you'll only get the best.
+              </p>
+
+              <p className={styles['actions']}>
+                <Button>Contact Us</Button>
+              </p>
+            </div>         
+            
+
+            
           </div>
           <div className={styles['right']}>
             <img src={require('../../static/illustrations/hero.svg')} />
           </div>
         </Page.Section>
 
-        <Page.Section>
+        <Page.Section
+          navbarMode='primary'
+          sectionNumber={1}
+        >
           
         </Page.Section>
 
-        <Page.Section>
+        <Page.Section
+          navbarMode='light'
+          sectionNumber={2}
+        >
           
         </Page.Section>
 
-        <Page.Section>
+        <Page.Section
+          navbarMode='primary'
+          sectionNumber={3}
+        >
           
         </Page.Section>
         
-        <Page.Section>
+        <Page.Section
+          navbarMode='light'
+          sectionNumber={4}
+        >
           
         </Page.Section>
       </Page>
