@@ -6,11 +6,13 @@
     .section {
         position: relative;
         clip-path: inset(0);
+        padding-top: #{$navbarHeight}px;
     
         .section-navbar {
             position: absolute;
             height: calc(100% + #{$navbarHeight}px);
             width: 100%;
+            top: 0;
         }
     
         .section-content {
