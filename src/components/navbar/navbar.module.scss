@@ -13,6 +13,7 @@ $navbarHeight: 75;
     z-index: 99;
     display: flex;
     justify-content: space-between;
+    will-change: top;
 
     &.light {
         background-color: $light;
