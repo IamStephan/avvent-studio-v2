@@ -54,7 +54,7 @@ export default class Navbar extends PureComponent {
     requestAnimationFrame(() => {
       this.nav.current.style.top = `${window.scrollY - (sectionNumber * window.innerHeight)}px`
 
-      this.handleScroll(sectionNumber)
+      setTimeout(() => this.handleScroll(sectionNumber), 0) 
     })
   }
 
