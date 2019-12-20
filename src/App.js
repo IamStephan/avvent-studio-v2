@@ -27,7 +27,7 @@ class App extends Component {
         <Router>
           <ScrollToTop />
           <Switch>
-            <Route component={Home} exact path='/' />
+            <Route component={Home} />
           </Switch>
           <Footer />
         </Router>

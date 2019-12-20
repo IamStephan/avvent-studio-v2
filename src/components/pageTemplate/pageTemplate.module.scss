@@ -5,32 +5,35 @@
 .page {
     .section {
         position: relative;
-        clip-path: inset(0);
         padding-top: #{$navbarHeight}px;
+
+        &.clip {
+            clip-path: inset(0);
+        }
     
         .section-navbar {
             position: absolute;
-            height: calc(100% + #{$navbarHeight}px);
+            height: calc(100% + #{$navbarHeight * 2}px);
             width: 100%;
-            top: 0;
+            top: -#{$navbarHeight}px;
+        }
+
+        .section-navbar-no-clip {
+            position: absolute;
+            height: #{$navbarHeight}px;
+            width: 100%;
+            top: 0px;
         }
     
         .section-content {
-            min-height: 100vh;
+            min-height: calc(100vh - #{$navbarHeight}px);
             position: relative;
         }
     
         &:nth-child(2n) {
             background-color: $primary;
         }
-    }
-    .section {
-        &:not(:first-child) {
-            .section-navbar {
-                height: calc(100% + #{$navbarHeight * 2}px);
-                top: -75px;
-            }
-        }
+
         &:last-child {
             .section-navbar {
                 height: calc(100% + #{$navbarHeight}px);
