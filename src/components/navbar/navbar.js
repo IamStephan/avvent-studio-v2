@@ -1,5 +1,6 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import Proptypes from 'prop-types';
+import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 
 import globals from '../../utils/globals.scss';
@@ -10,6 +11,8 @@ import AddIcon from '@material-ui/icons/AddCircleOutline';
 import Button from '../button/button';
 
 @withRouter
+@inject('AppStore')
+@observer
 export default class Navbar extends PureComponent {
   static propTypes = {
     mode: Proptypes.oneOf(['light', 'primary']).isRequired,
@@ -27,13 +30,18 @@ export default class Navbar extends PureComponent {
     super(props)
 
     this.state = {
-      windowWidth: 0
+      windowWidth: 0,
+      serviceDropdownOffset: 0
     }
+
+    this.ServicesButton = React.createRef()
 
     this.getWindowWidth = this.getWindowWidth.bind(this)
     this.getColorForSelected = this.getColorForSelected.bind(this)
     this.getColorForIcon = this.getColorForIcon.bind(this)
     this.openPage = this.openPage.bind(this)
+    this.openService = this.openService.bind(this)
+    this.closeService = this.closeService.bind(this)
   }
 
   componentDidMount() {
@@ -83,7 +91,21 @@ export default class Navbar extends PureComponent {
     this.props.history.push(url)
   }
 
+  openService() {
+    window.addEventListener('resize', () => this.props.AppStore.setOffset(this.ServicesButton.current.getBoundingClientRect().x))
+
+    this.props.AppStore.openServiceDropdown(this.ServicesButton.current.getBoundingClientRect().x)
+  }
+
+  closeService() {
+    window.removeEventListener('resize', () => this.props.AppStore.setOffset(this.ServicesButton.current.getBoundingClientRect().x))
+
+    this.props.AppStore.closeServiceDropdown()
+  }
+
   render() {
+    const { AppStore } = this.props
+ 
     if(this.props.clipSupport) {
       if(this.props.branding === 1) {
         return (
@@ -108,13 +130,14 @@ export default class Navbar extends PureComponent {
                   <Button
                     color={this.props.location.pathname === '/notyet' ? 'primary' : 'light'}
                     variant={this.props.location.pathname === '/notyet' ? 'contained' : 'ghost'}
-                    onClick={() => this.openPage('/notyet')}
+                    onClick={() => this.openService()}
                   >
                     Services
                     <AddIcon style={{
                       marginLeft: `${globals.margin * 2}px`,
                       color: this.props.location.pathname === '/notyet' ? globals.light : globals.primary
                     }} />
+                    <span ref={this.ServicesButton} />
                   </Button>
 
                   <Button
@@ -139,6 +162,41 @@ export default class Navbar extends PureComponent {
                     <MenuOpenIcon />
                   </Button>
                 </section>
+              )
+            }
+
+            {
+              AppStore.serviceDropdown.isOpen && (
+                <Fragment>
+                  <div onClick={() => this.closeService()} className={styles['dimmer']} />
+
+                  <div
+                    className={`${styles['dropdown']} ${styles['dark']}`}
+                    style={{
+                      left: `${AppStore.serviceDropdown.offset}px`
+                    }}
+                  >
+                    <Button
+                      variant='ghost'
+                      color='light'
+                    >
+                        Website | Webapp
+                      </Button>
+                    <Button
+                      variant='ghost'
+                      color='light'
+                    >
+                      E-commerce
+                    </Button>
+                    <Button
+                      variant='ghost' 
+                      color='light'
+                    >
+                      Mobile | Desktop
+                    </Button>
+                  </div>
+                </Fragment>
+                
               )
             }
           </nav>
@@ -176,13 +234,16 @@ export default class Navbar extends PureComponent {
               <Button
                 color={this.getColorForSelected('/notyet')}
                 variant={this.props.location.pathname === '/notyet' ? 'contained' : 'ghost'}
-                onClick={() => this.openPage('/notyet')}
+                onClick={() => this.openService()}
               >
                 Services
-                <AddIcon style={{
+                <AddIcon
+                  style={{
                     marginLeft: `${globals.margin * 2}px`,
                     color: this.getColorForIcon('/notyet')
-                  }} />
+                  }}
+                />
+                <span ref={this.ServicesButton} />
               </Button>
 
               <Button
@@ -209,6 +270,42 @@ export default class Navbar extends PureComponent {
             </section>
           )
         }
+
+        {
+          AppStore.serviceDropdown.isOpen && (
+            <Fragment>
+              <div onClick={() => this.closeService()} className={styles['dimmer']} />
+
+              <div
+                className={`${styles['dropdown']} ${styles[this.props.mode]}`}
+                style={{
+                  left: `${AppStore.serviceDropdown.offset}px`
+                }}
+              >
+                <Button
+                  variant='ghost'
+                  color={this.props.mode === 'light' ? 'light' : 'dark'}
+                >
+                    Website | Webapp
+                  </Button>
+                <Button
+                  variant='ghost'
+                  color={this.props.mode === 'light' ? 'light' : 'dark'}
+                >
+                  E-commerce
+                </Button>
+                <Button
+                  variant='ghost' 
+                  color={this.props.mode === 'light' ? 'light' : 'dark'}
+                >
+                  Mobile | Desktop
+                </Button>
+              </div>
+            </Fragment>
+            
+          )
+        }
+        
       </nav>
     );
   }

@@ -1,6 +1,7 @@
 @import '../../utils/globals.scss';
 @import '../navbar/navbar.module.scss';
 
+$navSectionHeight: 500;
 
 .page {
     .section {
@@ -13,9 +14,9 @@
     
         .section-navbar {
             position: absolute;
-            height: calc(100% + #{$navbarHeight * 2}px);
+            height: calc(100% + #{$navSectionHeight}px);
             width: 100%;
-            top: -#{$navbarHeight}px;
+            top: -#{$navSectionHeight / 2}px;
         }
 
         .section-navbar-no-clip {
