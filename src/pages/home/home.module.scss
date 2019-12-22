@@ -58,5 +58,9 @@ $breakpointOne: 800;
 @media screen and (orientation: portrait) {
     .hero {
         flex-direction: column-reverse;
+
+        .right {
+            min-height: 45vh;
+        }
     }
 }
