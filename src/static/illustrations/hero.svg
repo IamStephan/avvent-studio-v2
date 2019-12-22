@@ -187,8 +187,8 @@
 <stop offset="1" stop-color="#4C55A0" stop-opacity="0.2"/>
 </linearGradient>
 <linearGradient id="paint18_linear" x1="504.62" y1="156.339" x2="468.982" y2="153.07" gradientUnits="userSpaceOnUse">
-<stop stop-color="#464D89" stop-opacity="0.6"/>
-<stop offset="1" stop-color="#A7A7EE" stop-opacity="0.01"/>
+<stop stop-color="#287BA5"/>
+<stop offset="1" stop-color="#67C7EB"/>
 </linearGradient>
 <linearGradient id="paint19_linear" x1="391.52" y1="235.223" x2="391.52" y2="272.502" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FFC62C" stop-opacity="0.01"/>

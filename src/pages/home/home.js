@@ -42,7 +42,7 @@ export default class Home extends Component {
             
           </div>
           <div className={styles['right']}>
-            <img src={require('../../static/illustrations/hero.svg')} />
+            <img alt='Hero illustration' src={require('../../static/illustrations/hero.svg')} />
           </div>
         </Page.Section>
 
