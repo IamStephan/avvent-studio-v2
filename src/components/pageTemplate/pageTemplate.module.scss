@@ -11,6 +11,12 @@ $navSectionHeight: 500;
         &.clip {
             clip-path: inset(0);
         }
+
+        .title {
+            color: $dark;
+            text-align: center;
+            margin-bottom: #{$margin * 2}px;
+        }
     
         .section-navbar {
             position: absolute;
@@ -33,6 +39,10 @@ $navSectionHeight: 500;
     
         &:nth-child(2n) {
             background-color: $primary;
+
+            .title {
+                color: $light;
+            }
         }
 
         &:last-child {

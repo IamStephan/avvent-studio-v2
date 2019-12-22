@@ -42,6 +42,7 @@ export default class Navbar extends PureComponent {
     this.openService = this.openService.bind(this)
     this.closeService = this.closeService.bind(this)
     this.setOffset = this.setOffset.bind(this)
+    this.checkService = this.checkService.bind(this)
   }
 
   componentDidMount() {
@@ -63,9 +64,7 @@ export default class Navbar extends PureComponent {
     })
   }
 
-  getColorForSelected(path, mode) {
-    let selected = this.props.location.pathname === path
-
+  getColorForSelected(selected, mode) {
     let selectedLight
     let selectedDark
     let unselectedLight
@@ -127,6 +126,14 @@ export default class Navbar extends PureComponent {
     }
   }
 
+  checkService() {
+    if(this.props.location.pathname === '/web' || this.props.location.pathname === '/ecommerce' || this.props.location.pathname === '/app') {
+      return true
+    }
+
+    return false
+  }
+
   render() {
     const { AppStore } = this.props
  
@@ -155,8 +162,8 @@ export default class Navbar extends PureComponent {
                   </Button>
 
                   <Button
-                    color={this.props.location.pathname === '/notyet' ? 'primary' : 'light'}
-                    variant={this.props.location.pathname === '/notyet' ? 'contained' : 'ghost'}
+                    color={this.checkService() ? 'primary' : 'light'}
+                    variant={this.checkService() ? 'contained' : 'ghost'}
                     onClick={() => this.openService()}
                     style={{
                       marginRight: `${globals.margin}px`
@@ -165,7 +172,7 @@ export default class Navbar extends PureComponent {
                     Services
                     <AddIcon style={{
                       marginLeft: `${globals.margin * 2}px`,
-                      color: this.props.location.pathname === '/notyet' ? globals.light : globals.primary
+                      color: this.checkService() ? globals.light : globals.primary
                     }} />
                     <span ref={this.ServicesButton} />
                   </Button>
@@ -266,7 +273,7 @@ export default class Navbar extends PureComponent {
           this.state.windowWidth > styles.breakpointOne ? (
             <section className={styles['actions']}>
               <Button
-                color={this.getColorForSelected('/')}
+                color={this.getColorForSelected(this.props.location.pathname === '/')}
                 variant={this.props.location.pathname === '/' ? 'contained' : 'ghost'}
                 onClick={() => this.openPage('/')}
                 style={{
@@ -277,8 +284,8 @@ export default class Navbar extends PureComponent {
               </Button>
 
               <Button
-                color={this.getColorForSelected('/notyet')}
-                variant={this.props.location.pathname === '/notyet' ? 'contained' : 'ghost'}
+                color={this.getColorForSelected(this.checkService())}
+                variant={this.checkService() ? 'contained' : 'ghost'}
                 onClick={() => this.openService()}
                 style={{
                   marginRight: `${globals.margin}px`
@@ -288,14 +295,14 @@ export default class Navbar extends PureComponent {
                 <AddIcon
                   style={{
                     marginLeft: `${globals.margin * 2}px`,
-                    color: this.getColorForSelected('/notyet', 'icon')
+                    color: this.getColorForSelected(this.checkService(), 'icon')
                   }}
                 />
                 <span ref={this.ServicesButton} />
               </Button>
 
               <Button
-                color={this.getColorForSelected('/about')}
+                color={this.getColorForSelected(this.props.location.pathname === '/about')}
                 variant={this.props.location.pathname === '/about' ? 'contained' : 'ghost'}
                 onClick={() => this.openPage('/about')}
                 style={{
@@ -306,7 +313,7 @@ export default class Navbar extends PureComponent {
               </Button>
 
               <Button
-                color={this.getColorForSelected('/contact')}
+                color={this.getColorForSelected(this.props.location.pathname === '/contact')}
                 variant={this.props.location.pathname === '/contact' ? 'contained' : 'ghost'}
                 onClick={() => this.openPage('/contact')}
               >
@@ -337,7 +344,7 @@ export default class Navbar extends PureComponent {
                 }}
               >
                 <Button
-                  color={this.getColorForSelected('/web', 'dropdown')}
+                  color={this.getColorForSelected(this.props.location.pathname === '/web', 'dropdown')}
                   variant={this.props.location.pathname === '/web' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/web')}
                   style={{
@@ -347,7 +354,7 @@ export default class Navbar extends PureComponent {
                     Website | Webapp
                   </Button>
                 <Button
-                  color={this.getColorForSelected('/ecommerce', 'dropdown')}
+                  color={this.getColorForSelected(this.props.location.pathname === '/ecommerce', 'dropdown')}
                   variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/ecommerce')}
                   style={{
@@ -357,7 +364,7 @@ export default class Navbar extends PureComponent {
                   E-commerce
                 </Button>
                 <Button
-                  color={this.getColorForSelected('/app', 'dropdown')}
+                  color={this.getColorForSelected(this.props.location.pathname === '/app', 'dropdown')}
                   variant={this.props.location.pathname === '/app' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/app')}
                 >

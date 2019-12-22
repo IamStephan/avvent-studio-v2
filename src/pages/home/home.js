@@ -47,19 +47,33 @@ export default class Home extends Component {
         </Page.Section>
 
         <Page.Section navbarMode='primary'>
-          
+          <Page.SectionTitle>What we do.</Page.SectionTitle>
         </Page.Section>
 
         <Page.Section navbarMode='light'>
-          
+          <Page.SectionTitle>
+            How we do it
+            <span style={{
+              color: globals.primary
+            }}>
+              .
+            </span>
+          </Page.SectionTitle>
         </Page.Section>
 
         <Page.Section navbarMode='primary'>
-          
+          <Page.SectionTitle>What we have done.</Page.SectionTitle>
         </Page.Section>
         
         <Page.Section navbarMode='light'>
-          
+          <Page.SectionTitle>
+            Let us do it
+            <span style={{
+              color: globals.primary
+            }}>
+              .
+            </span>
+          </Page.SectionTitle>
         </Page.Section>
       </Page>
     );

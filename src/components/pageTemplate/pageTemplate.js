@@ -6,6 +6,16 @@ import styles from './pageTemplate.module.scss';
 
 import Navbar from '../navbar/navbar';
 
+class SectionTitle extends Component {
+  render() {
+    return (
+      <h2 className={styles['title']}>
+        {this.props.children}
+      </h2>
+    )
+  }
+}
+
 class Section extends Component {
   constructor(props) {
     super(props)
@@ -57,6 +67,7 @@ export default class Page extends Component {
   }
 
   static Section = Section
+  static SectionTitle = SectionTitle
 
   render() {
     return (
