@@ -58,6 +58,10 @@ export default class Navbar extends PureComponent {
   getWindowWidth() {
     if (window.innerWidth === this.state.windowWidth) return
 
+    if (this.state.windowWidth > styles.breakpointOne) {
+      this.props.AppStore.closeSidebar()
+    }
+    
     this.setState({
       ...this.state,
       windowWidth: window.innerWidth
