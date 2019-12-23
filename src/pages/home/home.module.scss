@@ -2,6 +2,8 @@
 
 $breakpointOne: 800;
 
+$whatWeDoBreakpoint: 972;
+
 .hero {
     display: flex;
 
@@ -55,6 +57,25 @@ $breakpointOne: 800;
     }
 }
 
+.card-container {
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+
+    .cards {
+        display: grid;
+        flex: 1;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        padding: #{$padding * 2}px;
+        grid-gap: #{$padding * 2}px;
+
+        .second {
+            transform: translateY(-25px);
+        }
+    }
+    
+}
+
 @media screen and (orientation: portrait) {
     .hero {
         flex-direction: column-reverse;
@@ -62,5 +83,11 @@ $breakpointOne: 800;
         .right {
             min-height: 45vh;
         }
+    }
+}
+
+@media screen and (max-width: #{$whatWeDoBreakpoint}px) {
+    .card-container .cards .second {
+        transform: translateY(0px);
     }
 }
