@@ -49,7 +49,19 @@ $transDur: 250;
         .actions {
             display: flex;
             flex-direction: column;
-            padding: #{$padding * 3}px;
+
+            .collapse {
+                background-color: $primary;
+                border-radius: #{$borderRadius}px;
+                margin-bottom: #{$margin}px;
+                padding-top: #{$padding}px;
+                display: flex;
+                flex-direction: column;
+                padding-left: #{$padding}px;
+                padding-right: #{$padding}px;
+                margin-left: #{$margin}px;
+                margin-right: #{$margin}px;
+            }
         }
 
         &.open {

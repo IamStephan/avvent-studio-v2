@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import Collapse from '@material-ui/core/Collapse';
 
 import globals from '../../utils/globals.scss';
 import styles from './sidebar.module.scss';
@@ -27,19 +28,22 @@ class Sidebar extends Component {
     super(props)
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      serviceCollapse: false
     }
 
     this.closeSidebar = this.closeSidebar.bind(this)
     this.openPage = this.openPage.bind(this)
     this.checkService = this.checkService.bind(this)
+    this.toggleServiceCollapse = this.toggleServiceCollapse.bind(this)
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
         ...this.state,
-        isOpen: true
+        isOpen: true,
+        serviceCollapse: this.checkService()
       })
     }, 0);
   }
@@ -68,6 +72,13 @@ class Sidebar extends Component {
     return false
   }
 
+  toggleServiceCollapse() {
+    this.setState({
+      ...this.state,
+      serviceCollapse: !this.state.serviceCollapse
+    })
+  }
+
   render() {
     let state = this.state.isOpen ? 'open' : 'close'
 
@@ -87,6 +98,8 @@ class Sidebar extends Component {
               onClick={() => this.openPage('/')}
               style={{
                 marginBottom: `${globals.margin}px`,
+                marginRight: `${globals.margin}px`,
+                marginLeft: `${globals.margin}px`,
               }}
             >
               Home
@@ -97,7 +110,10 @@ class Sidebar extends Component {
               color='dark'
               style={{
                 marginBottom: `${globals.margin}px`,
+                marginRight: `${globals.margin}px`,
+                marginLeft: `${globals.margin}px`,
               }}
+              onClick={this.toggleServiceCollapse}
             >
               Services
               <AddIcon
@@ -108,41 +124,44 @@ class Sidebar extends Component {
               />
             </Button>
 
-            <Button
-              variant={this.props.location.pathname === '/web' ? 'contained' : 'outlined'}
-              onClick={() => this.openPage('/web')}
-              color='dark'
-              style={{
-                marginBottom: `${globals.margin}px`,
-                marginLeft: `${globals.margin * 4}px`,
-              }}
-            >
-              Website | Webapp
-            </Button>
+            <Collapse in={this.state.serviceCollapse}>
+              <div className={styles['collapse']}>
+                <Button
+                  variant={this.props.location.pathname === '/web' ? 'contained' : 'outlined'}
+                  onClick={() => this.openPage('/web')}
+                  color='light'
+                  style={{
+                    marginBottom: `${globals.margin}px`
+                  }}
+                >
+                  Website | Webapp
+                </Button>
 
-            <Button
-              variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'outlined'}
-              onClick={() => this.openPage('/ecommerce')}
-              color='dark'
-              style={{
-                marginBottom: `${globals.margin}px`,
-                marginLeft: `${globals.margin * 4}px`,
-              }}
-            >
-              E-commerce
-            </Button>
+                <Button
+                  variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'outlined'}
+                  onClick={() => this.openPage('/ecommerce')}
+                  color='light'
+                  style={{
+                    marginBottom: `${globals.margin}px`
+                  }}
+                >
+                  E-commerce
+                </Button>
 
-            <Button
-              variant={this.props.location.pathname === '/app' ? 'contained' : 'outlined'}
-              onClick={() => this.openPage('/app')}
-              color='dark'
-              style={{
-                marginBottom: `${globals.margin}px`,
-                marginLeft: `${globals.margin * 4}px`,
-              }}
-            >
-              Desktop | Mobile
-            </Button>
+                <Button
+                  variant={this.props.location.pathname === '/app' ? 'contained' : 'outlined'}
+                  onClick={() => this.openPage('/app')}
+                  color='light'
+                  style={{
+                    marginBottom: `${globals.margin}px`
+                  }}
+                >
+                  Desktop | Mobile
+                </Button>
+              </div>
+            </Collapse>
+
+            
 
             <Button
               variant={this.props.location.pathname === '/about' ? 'contained' : 'outlined'}
@@ -150,6 +169,8 @@ class Sidebar extends Component {
               color='dark'
               style={{
                 marginBottom: `${globals.margin}px`,
+                marginRight: `${globals.margin}px`,
+                marginLeft: `${globals.margin}px`,
               }}
             >
               About Us
@@ -161,6 +182,8 @@ class Sidebar extends Component {
               color='dark'
               style={{
                 marginBottom: `${globals.margin}px`,
+                marginRight: `${globals.margin}px`,
+                marginLeft: `${globals.margin}px`,
               }}
             >
               Contact Us
