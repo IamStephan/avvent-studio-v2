@@ -93,8 +93,8 @@ class Sidebar extends Component {
 
           <div className={styles['actions']}>
             <Button
-              variant={this.props.location.pathname === '/' ? 'contained' : 'outlined'}
-              color='dark'
+              variant={this.props.location.pathname === '/' ? 'contained' : 'ghost'}
+              color={this.props.location.pathname === '/' ? 'primary' : 'dark'}
               onClick={() => this.openPage('/')}
               style={{
                 marginBottom: `${globals.margin}px`,
@@ -106,8 +106,8 @@ class Sidebar extends Component {
             </Button>
 
             <Button
-              variant={this.checkService() ? 'contained' : 'outlined'}
-              color='dark'
+              variant={this.checkService() ? 'contained' : 'ghost'}
+              color={this.checkService() ? 'primary' : 'dark'}
               style={{
                 marginBottom: `${globals.margin}px`,
                 marginRight: `${globals.margin}px`,
@@ -127,7 +127,7 @@ class Sidebar extends Component {
             <Collapse in={this.state.serviceCollapse}>
               <div className={styles['collapse']}>
                 <Button
-                  variant={this.props.location.pathname === '/web' ? 'contained' : 'outlined'}
+                  variant={this.props.location.pathname === '/web' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/web')}
                   color='light'
                   style={{
@@ -138,7 +138,7 @@ class Sidebar extends Component {
                 </Button>
 
                 <Button
-                  variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'outlined'}
+                  variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/ecommerce')}
                   color='light'
                   style={{
@@ -149,7 +149,7 @@ class Sidebar extends Component {
                 </Button>
 
                 <Button
-                  variant={this.props.location.pathname === '/app' ? 'contained' : 'outlined'}
+                  variant={this.props.location.pathname === '/app' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/app')}
                   color='light'
                   style={{
@@ -164,9 +164,9 @@ class Sidebar extends Component {
             
 
             <Button
-              variant={this.props.location.pathname === '/about' ? 'contained' : 'outlined'}
+              variant={this.props.location.pathname === '/about' ? 'contained' : 'ghost'}
               onClick={() => this.openPage('/about')}
-              color='dark'
+              color={this.props.location.pathname === '/about' ? 'primary' : 'dark'}
               style={{
                 marginBottom: `${globals.margin}px`,
                 marginRight: `${globals.margin}px`,
@@ -177,9 +177,9 @@ class Sidebar extends Component {
             </Button>
 
             <Button
-              variant={this.props.location.pathname === '/contact' ? 'contained' : 'outlined'}
+              variant={this.props.location.pathname === '/contact' ? 'contained' : 'ghost'}
               onClick={() => this.openPage('/contact')}
-              color='dark'
+              color={this.props.location.pathname === '/contact' ? 'primary' : 'dark'}
               style={{
                 marginBottom: `${globals.margin}px`,
                 marginRight: `${globals.margin}px`,
