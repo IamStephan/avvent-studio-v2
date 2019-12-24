@@ -45,7 +45,7 @@ class Sidebar extends Component {
         isOpen: true,
         serviceCollapse: this.checkService()
       })
-    }, 0);
+    }, 10);
   }
 
   closeSidebar() {

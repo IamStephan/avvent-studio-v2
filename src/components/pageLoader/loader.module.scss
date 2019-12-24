@@ -1,0 +1,85 @@
+@import '../../utils/globals.scss';
+
+$loaderSize: 75;
+$dotSize: 15;
+$dotBoxSize: 50;
+$animDur: 500;
+
+.error {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        color: $primary;
+        margin-bottom: #{$margin * 2}px;
+    }
+
+    h3 {
+        text-align: center;
+        margin-bottom: #{$margin * 2}px;
+    }
+}
+
+.timed-out {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        color: $primary;
+    }
+
+    h3 {
+        text-align: center;
+    }
+}
+
+.loader {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .letter {
+        font-size: #{$loaderSize}px;
+        position: relative;
+        color: $primary;
+
+        .dot {
+            position: absolute;
+            width: #{$dotBoxSize / 1.5}px;
+            height: #{$dotBoxSize / 1.5}px;
+            top: -#{($dotBoxSize / 1.5) - 25 - 5}px;
+            right: -#{($dotBoxSize / 1.5) - 5}px;
+            animation: loaderSpin #{$animDur}ms ease-in-out infinite;
+
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                height: #{$dotSize}px;
+                width: #{$dotSize}px;
+                border-radius: 50%;
+                background-color: $primary;
+            }
+        }
+    }
+}
+
+@keyframes loaderSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

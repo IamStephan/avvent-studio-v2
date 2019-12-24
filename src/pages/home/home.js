@@ -61,7 +61,7 @@ export default class Home extends Component {
                 </Card.Title>
 
                 <Card.Content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi ipsum faucibus.
+                  Push your business across the borders and grow by allowing customers to buy your products directly from your website. That way you are able to maintain the look and you feel of your business.
                 </Card.Content>
 
                 <Card.Actions>
@@ -81,7 +81,7 @@ export default class Home extends Component {
                 </Card.Title>
 
                 <Card.Content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi ipsum faucibus.
+                  Give your business a presence in a new world powered by technology. Don't just be online but be there in style. Let your customers discover you and get the feel of your business simply through your website. 
                 </Card.Content>
 
                 <Card.Actions>
@@ -101,7 +101,7 @@ export default class Home extends Component {
                 </Card.Title>
 
                 <Card.Content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi ipsum faucibus.
+                  Simplify your business flow or simply make your customer's life more convenient. With our expertise you can expect both beautiful and functional mobile and/or desktop application for your business.
                 </Card.Content>
 
                 <Card.Actions>
@@ -127,6 +127,40 @@ export default class Home extends Component {
               .
             </span>
           </Page.SectionTitle>
+
+          <div className={styles['howWeDoIt']}>
+            <div className={styles['row']}>
+              <div className={styles['item']} count='1'>
+                <img alt='We conceptualize.' src={require('../../static/illustrations/we_conceptualize.svg')} />
+              </div>
+            </div>
+
+            <div className={styles['row']}>
+              <div className={styles['item']} count='2'>
+                <img alt='We design.' src={require('../../static/illustrations/we_design.svg')} />
+              </div>
+
+              <div className={styles['item']} count='3'>
+                <img alt='We develop.' src={require('../../static/illustrations/we_develop.svg')} />
+              </div>
+            </div>
+
+            <div className={styles['row']}>
+              <div className={styles['item']} count='4'>
+                <img alt='We test.' src={require('../../static/illustrations/we_test.svg')} />
+              </div>
+
+              <div className={styles['item']} count='5'>
+                <img alt='We revise.' src={require('../../static/illustrations/we_revise.svg')} />
+              </div>
+            </div>
+
+            <div className={styles['row']}>
+              <div className={styles['item']} count='6'>
+                <img alt='We release.' src={require('../../static/illustrations/we_release.svg')} />
+              </div>
+            </div>
+          </div>
         </Page.Section>
 
         <Page.Section navbarMode='primary'>

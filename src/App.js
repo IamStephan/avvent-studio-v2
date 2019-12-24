@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import ScrollToTop from './components/scrollToTop/scrollToTop';
+import Loader from './components/pageLoader/loader';
 import Sidebar from './components/sidebar/sidebar';
 import Footer from './components/footer/footer';
 
@@ -15,7 +16,7 @@ const stores = {
 
 const Home = Loadable({
   loader: () => import('./pages/home/home'),
-  loading: () => (<div>Loading</div>)
+  loading: () => <Loader />
 })
 
 
