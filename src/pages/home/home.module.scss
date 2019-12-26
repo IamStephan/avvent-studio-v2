@@ -127,6 +127,7 @@ $whatWeHaveDoneBreakpoint: 800;
 .whatWeHaveDone {
     display: flex;
     flex: 1;
+    overflow: hidden;
 
     .left {
         flex: 3;
