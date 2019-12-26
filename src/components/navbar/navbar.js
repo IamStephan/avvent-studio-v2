@@ -22,7 +22,7 @@ export default class Navbar extends PureComponent {
 
   static defaultProps = {
     mode: 'light',
-    branding: 0,
+    branding: 1,
     clipSupport: false
   }
 

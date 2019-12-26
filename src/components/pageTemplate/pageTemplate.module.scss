@@ -55,5 +55,11 @@ $navSectionHeight: 500;
                 height: calc(100% + #{$navbarHeight}px);
             }
         }
+
+        &:first-child {
+            .title {
+                margin-top: #{$margin * 2}px;
+            }
+        }
     }
 }
