@@ -5,6 +5,8 @@ $breakpointOne: 800;
 $whatWeDoBreakpoint: 972;
 $howWeDoItBreakpoint: 720;
 
+$whatWeHaveDoneBreakpoint: 800;
+
 .hero {
     display: flex;
 
@@ -122,6 +124,110 @@ $howWeDoItBreakpoint: 720;
     }
 }
 
+.whatWeHaveDone {
+    display: flex;
+    flex: 1;
+
+    .left {
+        flex: 3;
+        position: relative;
+        margin: #{$margin * 2}px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .header {
+            color: $light;
+            margin-bottom: #{$margin * 2}px;
+        }
+
+        .content {
+            max-width: 450px;
+            text-align: center;
+            color: $light;
+            margin-bottom: #{$margin * 4}px;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            max-width: 450px;
+            min-width: 300px;
+
+            .left-control {
+                transform: rotate(180deg);
+            }
+
+            .left-control, .right-control {
+                color: $light;
+
+                * {
+                    font-size: 50px;
+                    cursor: pointer;
+                }
+            }
+
+            .center {
+                flex: 1;
+                display: flex;
+                align-items: center;
+
+                .line {
+                    flex: 1;
+                    height: 5px;
+                    background-color: $light;
+                    position: relative;
+
+                    img {
+                        position: absolute;
+                        top: -8px;
+                        left: 50%;
+                        height: 200px;
+                        width: auto;
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .circle {
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50%;
+                    background-color: $light;
+                }
+            }
+        }
+        
+
+        img {
+            position: absolute;
+            top: 0px;
+            height: auto;
+            max-width: 700px;
+            object-fit: cover;
+            z-index: -1;
+        }
+    }
+
+    .right {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: #{$margin * 2}px;
+
+        .card-container {
+            flex: 1;
+            display: flex;
+            position: relative;
+
+            .card {
+                flex: 1;
+            }
+        }
+    }
+}
+
 @media screen and (orientation: portrait) {
     .hero {
         flex-direction: column-reverse;
@@ -141,5 +247,15 @@ $howWeDoItBreakpoint: 720;
 @media screen and (max-width: #{$howWeDoItBreakpoint}px) {
     .howWeDoIt .row {
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: #{$whatWeHaveDoneBreakpoint}px) {
+    .whatWeHaveDone {
+        flex-direction: column-reverse;
+
+        .left {
+            min-height: 500px;
+        }
     }
 }

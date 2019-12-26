@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import styles from './pageTemplate.module.scss';
 
 import Navbar from '../navbar/navbar';
+import Footer from '../footer/footer';
 
 class SectionTitle extends Component {
   render() {
@@ -17,6 +18,14 @@ class SectionTitle extends Component {
 }
 
 class Section extends Component {
+  static propTypes = {
+    display: Proptypes.oneOf(['none', 'flex'])
+  }
+
+  static defaultProps = {
+    display: 'none'
+  }
+
   constructor(props) {
     super(props)
 
@@ -51,7 +60,7 @@ class Section extends Component {
           )
         }
         
-        <div className={`${styles['section-content']} ${this.props.className}`}>
+        <div className={`${styles['section-content']} ${this.props.className} ${styles[this.props.display]}`}>
           {this.props.children}
         </div>
       </section>
@@ -83,6 +92,8 @@ export default class Page extends Component {
         <div className={styles['page']}>
           {this.props.children}
         </div>
+
+        <Footer />
       </Fragment>
     );
   }

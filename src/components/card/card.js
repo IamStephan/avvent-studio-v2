@@ -5,8 +5,13 @@ import styles from './card.module.scss';
 
 class CardMedia extends PureComponent {
   static propTypes = {
-    height: PropTypes.number,
-    mode: PropTypes.oneOf(['contain', 'cover'])
+    mode: PropTypes.oneOf(['contain', 'cover']),
+    customHeight: PropTypes.bool
+  }
+
+  static defaultProps = {
+    height: 150,
+    mode: 'contain'
   }
 
   render() {
@@ -15,7 +20,7 @@ class CardMedia extends PureComponent {
         style={{
           height: `${this.props.height}px`
         }}
-        className={`${styles['card-media']} ${styles[this.props.mode]}`}
+        className={`${styles['card-media']} ${styles[this.props.mode]} ${this.props.className}`}
       >
         <img alt={this.props.alt} src={this.props.src} />
       </div>

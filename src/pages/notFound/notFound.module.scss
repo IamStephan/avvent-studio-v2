@@ -1,0 +1,43 @@
+@import '../../utils/globals.scss';
+
+$imgBreakpoint: 950;
+
+.notFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+
+    .huge {
+        font-size: 30vh;
+    }
+
+    h1, p {
+        text-align: center;
+    }
+
+    img {
+        position: absolute;
+        bottom: -50%;
+        right: 50px;
+    }
+}
+
+@media screen and (max-width: #{$imgBreakpoint}px) {
+    .notFound {
+        img {
+            visibility: hidden;
+        }
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .notFound {
+        img {
+            visibility: hidden;
+        }
+    }
+}

@@ -6,7 +6,6 @@ import Loadable from 'react-loadable';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
 import Loader from './components/pageLoader/loader';
 import Sidebar from './components/sidebar/sidebar';
-import Footer from './components/footer/footer';
 
 import AppStore from './stores/appStore'
 
@@ -20,6 +19,11 @@ const Home = Loadable({
 })
 
 
+const NotFound = Loadable({
+  loader: () => import('./pages/notFound/notFound'),
+  loading: () => <Loader />
+})
+
 class App extends Component {
   render() {
     return (
@@ -29,9 +33,9 @@ class App extends Component {
           <ScrollToTop />
           <Sidebar />
           <Switch>
-            <Route component={Home} />
+            <Route component={Home} exact path='/' />
+            <Route component={NotFound} />
           </Switch>
-          <Footer />
         </Router>
       </StoreProvider>
       </Fragment>

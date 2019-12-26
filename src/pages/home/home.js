@@ -4,6 +4,7 @@ import globals from '../../utils/globals.scss';
 import styles from './home.module.scss';
 
 import InfoIcon from '@material-ui/icons/InfoOutlined';
+import ArrowIcon from '@material-ui/icons/PlayCircleFilled';
 import Page from '../../components/pageTemplate/pageTemplate';
 import Button from '../../components/button/button';
 import Card from '../../components/card/card';
@@ -163,8 +164,50 @@ export default class Home extends Component {
           </div>
         </Page.Section>
 
-        <Page.Section navbarMode='primary'>
+        <Page.Section navbarMode='primary' display='flex'>
           <Page.SectionTitle>What we have done.</Page.SectionTitle>
+          
+          <div className={styles['whatWeHaveDone']}>
+            <div className={styles['left']}>
+              <img alt='spot' src={require('../../static/illustrations/spot_1.svg')} />
+
+              <h1 className={styles['header']}>
+                Gerimed Mobility
+              </h1>
+
+              <p className={styles['content']}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet dictum sit amet justo. Nisi porta lorem mollis aliquam ut porttitor leo a. Ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
+              </p>
+
+              <div className={styles['controls']}>
+                <div className={styles['left-control']}>
+                  <ArrowIcon />
+                </div>
+
+                <div className={styles['center']}>
+                  <div className={styles['circle']} />
+
+                  <div className={styles['line']}>
+                    <img alt='Girl Jump' src={require('../../static/illustrations/girl_jump.svg')} />
+                  </div>
+
+                  <div className={styles['circle']} />
+                </div>
+
+                <div className={styles['right-control']}>
+                  <ArrowIcon />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles['right']}>
+              <div className={styles['card-container']}>
+                <Card className={styles['card']}>
+                  <Card.Media src={require('../../static/screenshots/mobility-home.png')} mode='cover' height={450} />
+                </Card>
+              </div>
+            </div>
+          </div>
         </Page.Section>
         
         <Page.Section navbarMode='light'>

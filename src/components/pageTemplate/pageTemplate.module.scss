@@ -35,6 +35,11 @@ $navSectionHeight: 500;
         .section-content {
             min-height: calc(100vh - #{$navbarHeight}px);
             position: relative;
+
+            &.flex {
+                display: flex;
+                flex-direction: column;
+            }
         }
     
         &:nth-child(2n) {
