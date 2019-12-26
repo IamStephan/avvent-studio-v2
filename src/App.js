@@ -8,9 +8,11 @@ import Loader from './components/pageLoader/loader';
 import Sidebar from './components/sidebar/sidebar';
 
 import AppStore from './stores/appStore'
+import PortfolioStore from './stores/portfolioStore'
 
 const stores = {
-  AppStore
+  AppStore,
+  PortfolioStore
 }
 
 const Home = Loadable({

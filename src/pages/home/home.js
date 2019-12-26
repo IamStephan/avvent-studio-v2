@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {observer, inject} from 'mobx-react';
 
 import globals from '../../utils/globals.scss';
 import styles from './home.module.scss';
@@ -9,8 +10,110 @@ import Page from '../../components/pageTemplate/pageTemplate';
 import Button from '../../components/button/button';
 import Card from '../../components/card/card';
 
+@inject('PortfolioStore')
+@observer
 export default class Home extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      whatWeHaveDone: {
+        currentIndex: 0,
+        transitionState: 'end'
+      }
+    }
+
+    this.changeCard = this.changeCard.bind(this)
+  }
+
+  changeCard(direction) {
+    if(this.state.whatWeHaveDone.transitionState === 'start') return
+    
+    if(direction === 'right') {
+      if(this.state.whatWeHaveDone.currentIndex < this.props.PortfolioStore.projects.length - 1) {
+        this.setState({
+          ...this.state,
+          whatWeHaveDone: {
+            ...this.state.whatWeHaveDone,
+            transitionState: 'start'
+          }
+        })
+
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            whatWeHaveDone: {
+              ...this.state.whatWeHaveDone,
+              transitionState: 'end',
+              currentIndex: this.state.whatWeHaveDone.currentIndex + 1
+            }
+          })
+        }, styles.whatWeHaveDonetransitionDur);
+      } else {
+        this.setState({
+          ...this.state,
+          whatWeHaveDone: {
+            ...this.state.whatWeHaveDone,
+            transitionState: 'start'
+          }
+        })
+
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            whatWeHaveDone: {
+              ...this.state.whatWeHaveDone,
+              transitionState: 'end',
+              currentIndex: 0
+            }
+          })
+        }, styles.whatWeHaveDonetransitionDur);
+      }
+    } else {
+      if(this.state.whatWeHaveDone.currentIndex === 0) {
+        this.setState({
+          ...this.state,
+          whatWeHaveDone: {
+            ...this.state.whatWeHaveDone,
+            transitionState: 'start'
+          }
+        })
+
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            whatWeHaveDone: {
+              ...this.state.whatWeHaveDone,
+              transitionState: 'end',
+              currentIndex: this.props.PortfolioStore.projects.length - 1
+            }
+          })
+        }, styles.whatWeHaveDonetransitionDur);
+      } else {
+        this.setState({
+          ...this.state,
+          whatWeHaveDone: {
+            ...this.state.whatWeHaveDone,
+            transitionState: 'start'
+          }
+        })
+
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            whatWeHaveDone: {
+              ...this.state.whatWeHaveDone,
+              transitionState: 'end',
+              currentIndex: this.state.whatWeHaveDone.currentIndex - 1
+            }
+          })
+        }, styles.whatWeHaveDonetransitionDur);
+      }
+    }
+  }
+
   render() {
+    const { PortfolioStore } = this.props
     return (
       <Page
         title='Avvent Studio: Home'
@@ -171,16 +274,16 @@ export default class Home extends Component {
             <div className={styles['left']}>
               <img alt='spot' src={require('../../static/illustrations/spot_1.svg')} />
 
-              <h1 className={styles['header']}>
-                Gerimed Mobility
+              <h1 className={`${styles['header']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
+                {PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].title}
               </h1>
 
-              <p className={styles['content']}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet dictum sit amet justo. Nisi porta lorem mollis aliquam ut porttitor leo a. Ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
+              <p className={`${styles['content']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
+                {PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].description}
               </p>
 
               <div className={styles['controls']}>
-                <div className={styles['left-control']}>
+                <div onClick={() => this.changeCard('left')} className={styles['left-control']}>
                   <ArrowIcon />
                 </div>
 
@@ -194,16 +297,20 @@ export default class Home extends Component {
                   <div className={styles['circle']} />
                 </div>
 
-                <div className={styles['right-control']}>
+                <div onClick={() => this.changeCard('right')} className={styles['right-control']}>
                   <ArrowIcon />
                 </div>
               </div>
             </div>
 
-            <div className={styles['right']}>
+            <div className={`${styles['right']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
               <div className={styles['card-container']}>
                 <Card className={styles['card']}>
-                  <Card.Media src={require('../../static/screenshots/mobility-home.png')} mode='cover' height={450} />
+                  <Card.Media
+                    src={this.state.whatWeHaveDone.transitionState === 'end' ? PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].img : null}
+                    mode='cover'
+                    height={450}
+                  />
                 </Card>
               </div>
             </div>

@@ -22,7 +22,12 @@ class CardMedia extends PureComponent {
         }}
         className={`${styles['card-media']} ${styles[this.props.mode]} ${this.props.className}`}
       >
-        <img alt={this.props.alt} src={this.props.src} />
+        {
+          this.props.src ? (
+            <img alt={this.props.alt} src={this.props.src} />
+          ) : null
+        }
+        
       </div>
     )
   }

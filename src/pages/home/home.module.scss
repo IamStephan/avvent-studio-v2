@@ -6,6 +6,7 @@ $whatWeDoBreakpoint: 972;
 $howWeDoItBreakpoint: 720;
 
 $whatWeHaveDoneBreakpoint: 800;
+$whatWeHaveDonetransitionDur: 500;
 
 .hero {
     display: flex;
@@ -141,6 +142,15 @@ $whatWeHaveDoneBreakpoint: 800;
         .header {
             color: $light;
             margin-bottom: #{$margin * 2}px;
+            transition: opacity #{$whatWeHaveDonetransitionDur}ms;
+
+            &.start {
+                opacity: 0;
+            }
+
+            &.end {
+                opacity: 1;
+            }
         }
 
         .content {
@@ -148,6 +158,15 @@ $whatWeHaveDoneBreakpoint: 800;
             text-align: center;
             color: $light;
             margin-bottom: #{$margin * 4}px;
+            transition: opacity #{$whatWeHaveDonetransitionDur}ms;
+
+            &.start {
+                opacity: 0;
+            }
+
+            &.end {
+                opacity: 1;
+            }
         }
 
         .controls {
@@ -202,7 +221,8 @@ $whatWeHaveDoneBreakpoint: 800;
 
         img {
             position: absolute;
-            top: 0px;
+            top: 50%;
+            transform: translateY(-50%);
             height: auto;
             max-width: 700px;
             object-fit: cover;
@@ -216,6 +236,14 @@ $whatWeHaveDoneBreakpoint: 800;
         justify-content: center;
         align-items: center;
         margin: #{$margin * 2}px;
+        transition: transform #{$whatWeHaveDonetransitionDur}ms;
+
+        &.start {
+            transform: translateX(150%);
+        }
+        &.end {
+            transform: translateX(0px);
+        }
 
         .card-container {
             flex: 1;
@@ -224,6 +252,14 @@ $whatWeHaveDoneBreakpoint: 800;
 
             .card {
                 flex: 1;
+
+                img .end {
+                    display: static;
+                }
+
+                img .start {
+                    display: none;
+                }
             }
         }
     }
@@ -259,4 +295,8 @@ $whatWeHaveDoneBreakpoint: 800;
             min-height: 500px;
         }
     }
+}
+
+:export {
+    whatWeHaveDonetransitionDur: $whatWeHaveDonetransitionDur;
 }
