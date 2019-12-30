@@ -3,7 +3,7 @@
 $breakpointOne: 800;
 
 $whatWeDoBreakpoint: 972;
-$howWeDoItBreakpoint: 720;
+$howWeDoItBreakpoint: 830;
 
 $whatWeHaveDoneBreakpoint: 800;
 $whatWeHaveDonetransitionDur: 500;
@@ -89,12 +89,18 @@ $whatWeHaveDonetransitionDur: 500;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        margin-bottom: 50px;
 
-        .item {
+        &:nth-child(2n) {
+            flex-direction: row-reverse;
+        }
+
+        .img-container {
             position: relative;
-            height: 300px;
-            width: 300px;
+            padding: #{$padding}px;
             margin: #{$margin * 2}px;
+            min-height: 300px;
+            width: 300px;
 
             &:before {
                 content: attr(count);
@@ -115,11 +121,19 @@ $whatWeHaveDonetransitionDur: 500;
 
             img {
                 position: absolute;
-                top: 0px;
-                left: 0px;
                 width: 100%;
                 height: 100%;
-                object-fit: contain;
+                object-fit: contain;    
+            }
+        }
+
+        .content {
+            max-width: 500px;
+            text-align: center;
+            padding: #{$padding * 2}px;
+
+            .heading {
+                margin-bottom: #{$margin * 2}px;
             }
         }
     }
@@ -201,7 +215,7 @@ $whatWeHaveDonetransitionDur: 500;
 
                     img {
                         position: absolute;
-                        top: -8px;
+                        top: -9px;
                         left: 50%;
                         height: 200px;
                         width: auto;
@@ -283,7 +297,16 @@ $whatWeHaveDonetransitionDur: 500;
 
 @media screen and (max-width: #{$howWeDoItBreakpoint}px) {
     .howWeDoIt .row {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        margin-bottom: 50px;
+
+        .content .heading {
+            display: none;
+        }
+
+        &:nth-child(1n) {
+            flex-direction: column;
+        }
     }
 }
 

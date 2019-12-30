@@ -379,7 +379,6 @@ export default class Navbar extends PureComponent {
             
           )
         }
-        
       </nav>
     );
   }

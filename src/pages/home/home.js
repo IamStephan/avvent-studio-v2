@@ -234,34 +234,109 @@ export default class Home extends Component {
 
           <div className={styles['howWeDoIt']}>
             <div className={styles['row']}>
-              <div className={styles['item']} count='1'>
-                <img alt='We conceptualize.' src={require('../../static/illustrations/we_conceptualize.svg')} />
+              <div count={1} className={styles['img-container']}>
+                <img alt='We Conceptualize.' src={require('../../static/illustrations/we_conceptualize.svg')} />
+              </div>
+              <div className={styles['content']}>
+                <h2 className={styles['heading']}>
+                  We conceptualize
+                  <span style={{
+                    color: globals.primary
+                  }}>
+                    .
+                  </span>
+                </h2>
+                 asud hasui dhasi ioa jdoaisj doai jdoiaj sdoiasj oais oiasj doais jdoias doiad joais aois jdoais jdaois doias joiasj d
               </div>
             </div>
 
             <div className={styles['row']}>
-              <div className={styles['item']} count='2'>
-                <img alt='We design.' src={require('../../static/illustrations/we_design.svg')} />
+              <div count={2} className={styles['img-container']}>
+                <img alt='We Conceptualize.' src={require('../../static/illustrations/we_design.svg')} />
               </div>
-
-              <div className={styles['item']} count='3'>
-                <img alt='We develop.' src={require('../../static/illustrations/we_develop.svg')} />
-              </div>
-            </div>
-
-            <div className={styles['row']}>
-              <div className={styles['item']} count='4'>
-                <img alt='We test.' src={require('../../static/illustrations/we_test.svg')} />
-              </div>
-
-              <div className={styles['item']} count='5'>
-                <img alt='We revise.' src={require('../../static/illustrations/we_revise.svg')} />
+              
+              <div className={styles['content']}>
+                <h2 className={styles['heading']}>
+                  We design
+                  <span style={{
+                    color: globals.primary
+                  }}>
+                    .
+                  </span>
+                </h2>
+                 asud hasui dhasi ioa jdoaisj doai jdoiaj sdoiasj oais oiasj doais jdoias doiad joais aois jdoais jdaois doias joiasj d
               </div>
             </div>
 
             <div className={styles['row']}>
-              <div className={styles['item']} count='6'>
-                <img alt='We release.' src={require('../../static/illustrations/we_release.svg')} />
+              <div count={3} className={styles['img-container']}>
+                <img alt='We Conceptualize.' src={require('../../static/illustrations/we_develop.svg')} />
+              </div>
+              
+              <div className={styles['content']}>
+                <h2 className={styles['heading']}>
+                  We develop
+                  <span style={{
+                    color: globals.primary
+                  }}>
+                    .
+                  </span>
+                </h2>
+                 asud hasui dhasi ioa jdoaisj doai jdoiaj sdoiasj oais oiasj doais jdoias doiad joais aois jdoais jdaois doias joiasj d
+              </div>
+            </div>
+
+            <div className={styles['row']}>
+              <div count={4} className={styles['img-container']}>
+                <img alt='We Conceptualize.' src={require('../../static/illustrations/we_test.svg')} />
+              </div>
+              
+              <div className={styles['content']}>
+                <h2 className={styles['heading']}>
+                  We test
+                  <span style={{
+                    color: globals.primary
+                  }}>
+                    .
+                  </span>
+                </h2>
+                 asud hasui dhasi ioa jdoaisj doai jdoiaj sdoiasj oais oiasj doais jdoias doiad joais aois jdoais jdaois doias joiasj d
+              </div>
+            </div>
+
+            <div className={styles['row']}>
+              <div count={5} className={styles['img-container']}>
+                <img alt='We Conceptualize.' src={require('../../static/illustrations/we_revise.svg')} />
+              </div>
+              
+              <div className={styles['content']}>
+                <h2 className={styles['heading']}>
+                  We revise
+                  <span style={{
+                    color: globals.primary
+                  }}>
+                    .
+                  </span>
+                </h2>
+                 asud hasui dhasi ioa jdoaisj doai jdoiaj sdoiasj oais oiasj doais jdoias doiad joais aois jdoais jdaois doias joiasj d
+              </div>
+            </div>
+
+            <div className={styles['row']}>
+              <div count={6} className={styles['img-container']}>
+                <img alt='We Conceptualize.' src={require('../../static/illustrations/we_release.svg')} />
+              </div>
+              
+              <div className={styles['content']}>
+                <h2 className={styles['heading']}>
+                  We release
+                  <span style={{
+                    color: globals.primary
+                  }}>
+                    .
+                  </span>
+                </h2>
+                 asud hasui dhasi ioa jdoaisj doai jdoiaj sdoiasj oais oiasj doais jdoias doiad joais aois jdoais jdaois doias joiasj d
               </div>
             </div>
           </div>
