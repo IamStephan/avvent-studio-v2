@@ -84,14 +84,36 @@ $whatWeHaveDonetransitionDur: 500;
     position: relative;
     display: flex;
     flex-direction: column;
+    max-width: 980px;
+    margin: auto;
+
+    .row-spacer {
+        display: flex;
+        flex-direction: column;
+        height: 75px;
+        justify-content: center;
+        align-items: center;
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            background-color: $secondary;
+            border-radius: 50%;
+        }
+
+        .line {
+            flex: 1;
+            width: 3px;
+            background-color: $secondary;
+        }
+    }
 
     .row {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-bottom: 50px;
 
-        &:nth-child(2n) {
+        &.reverse {
             flex-direction: row-reverse;
         }
 
@@ -297,14 +319,10 @@ $whatWeHaveDonetransitionDur: 500;
 
 @media screen and (max-width: #{$howWeDoItBreakpoint}px) {
     .howWeDoIt .row {
-        flex-direction: column-reverse;
+        flex-direction: column;
         margin-bottom: 50px;
 
-        .content .heading {
-            display: none;
-        }
-
-        &:nth-child(1n) {
+        &.reverse {
             flex-direction: column;
         }
     }
