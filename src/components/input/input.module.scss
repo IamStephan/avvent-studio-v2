@@ -1,0 +1,52 @@
+@import '../../utils/globals.scss';
+
+$transDur: 100;
+
+.inputContainer {
+    position: relative;
+    padding: #{$padding}px;
+    padding-top: #{$padding * 2}px;
+
+    &.inline {
+        display: inline-flex;
+    }
+
+    &.full {
+        display: flex;
+    }
+
+    .label {
+        position: absolute;
+        left: #{$padding * 2}px;
+        transition: top #{$transDur}ms, font-size #{$transDur}ms;
+        user-select: none;
+        pointer-events: none;
+
+        &.focus {
+            top: 0;
+            font-size: 0.85em;
+        }
+
+        &.blur {
+            top: #{$padding * 2.5}px;
+            font-size: 1em;
+        }
+    }
+
+    .input {
+        flex: 1;
+        border: none;
+        padding: #{$padding}px;
+        color: $dark;
+        font-family: inherit;
+        appearance: none;
+        font-size: 1em;
+        box-shadow:   0px 1px 0px 0px $dark;
+        transition: box-shadow #{$transDur}ms;
+
+        &:focus {
+            box-shadow:   0px 3px 0px 0px $primary;
+            outline: none;
+        }
+    }
+}

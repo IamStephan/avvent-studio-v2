@@ -161,14 +161,21 @@ $animMs: 750;
 }
 
 .button {
-    padding: #{$padding}px;
-    padding-left: #{$padding * 2}px;
-    padding-right: #{$padding * 2}px;
-    border-radius: #{$borderRadius}px;
     cursor: pointer;
     user-select: none;
     position: relative;
     text-transform: uppercase;
+    padding: #{$padding}px;
+
+    &.normal {
+        padding-left: #{$padding * 2}px;
+        padding-right: #{$padding * 2}px;
+        border-radius: #{$borderRadius}px;
+    }
+
+    &.round {
+        border-radius: 50%;
+    }
 
     &.primary {
         @include color($primary)

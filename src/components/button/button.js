@@ -24,14 +24,16 @@ export default class Button extends Component {
     variant: Proptypes.oneOf(['contained', 'outlined', 'ghost']),
     color: Proptypes.oneOf(['primary', 'dark', 'light']),
     state: Proptypes.oneOf(['active', 'disabled', 'loading', 'toggled']),
-    width: Proptypes.oneOf(['full', 'inline'])
+    width: Proptypes.oneOf(['full', 'inline']),
+    shape: Proptypes.oneOf(['normal', 'round'])
   }
 
   static defaultProps = {
     variant: 'contained',
     color: 'primary',
     state: 'active',
-    width: 'inline'
+    width: 'inline',
+    shape: 'normal'
   }
 
   static Group = Group
@@ -42,7 +44,7 @@ export default class Button extends Component {
     return (
       <div
         onClick={click}
-        className={`${styles['button']} ${styles[this.props.variant]} ${styles[this.props.color]} ${styles[this.props.state]} ${styles[this.props.width]}`}
+        className={`${styles['button']} ${styles[this.props.variant]} ${styles[this.props.color]} ${styles[this.props.state]} ${styles[this.props.width]} ${styles[this.props.shape]}`}
         {...this.props}
       >
         {this.props.children}

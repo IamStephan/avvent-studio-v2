@@ -21,7 +21,7 @@ export default class Footer extends Component {
         </section>
 
         <section>
-          <Button onClick={() => window.scroll({top: 0, behavior: 'smooth'})} variant='outlined'>
+          <Button onClick={() => window.scroll({top: 0, behavior: 'smooth'})} shape='round'>
             <ArrowUpIcon />
           </Button>
         </section>
