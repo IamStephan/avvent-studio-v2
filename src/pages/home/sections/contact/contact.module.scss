@@ -1,14 +1,118 @@
 @import '../../../../utils/globals.scss';
 
+$contactBreakpoint1: 1035;
+$contactBreakpoint2: 520;
+$bgOffset: 30;
+
 .contact {
     flex: 1;
     display: flex;
 
     .left {
         flex: 1;
+        position: relative;
+        margin: #{$margin * 4}px;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 
     .right {
         flex: 1;
+        padding: #{$padding * 2}px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .form {
+            border-radius: #{$borderRadius}px;
+            padding: #{$padding * 2}px;
+            max-width: 600px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .row {
+                display: flex;
+                margin-bottom: #{$margin * 2}px;
+
+                .title {
+                    flex: 1;
+                    text-align: center;
+                    color: $light;
+                    margin-top: #{$margin * 2}px;
+                }
+            }
+
+            .action {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .bg {
+                position: absolute;
+                width: calc(100% - #{$bgOffset}px);
+                height: 100%;
+                background-color: $primary;
+                transform: translateX(#{$bgOffset}px);
+                border-radius: 10px;
+                z-index: -1;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: #{$contactBreakpoint1}px) {
+    .contact {
+        flex-direction: column;
+
+        .left {
+            min-height: 45vh;
+        }
+
+        .right {
+            align-items: center;
+            margin-bottom: #{$bgOffset}px;
+        }
+    }
+}
+
+@media screen and (max-width: #{$contactBreakpoint2}px) {
+    .contact {
+        flex-direction: column;
+
+        .left {
+            min-height: 45vh;
+        }
+
+        .right {
+            align-items: center;
+            margin-bottom: #{$bgOffset}px;
+            flex: 1;
+            padding: #{$padding}px;
+
+            .form {
+                padding: #{$padding}px;
+
+                .row {
+                    flex-direction: column;
+                }
+
+                .bg {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $primary;
+                    transform: translateX(-#{$padding}px);
+                }
+            }
+        }
     }
 }

@@ -13,40 +13,70 @@ $transDur: 100;
 
     &.full {
         display: flex;
+        flex: 1;
     }
 
     .label {
         position: absolute;
-        left: #{$padding * 2}px;
-        transition: top #{$transDur}ms, font-size #{$transDur}ms;
+        left: #{$padding * 2 + 1}px;
+        transition: top #{$transDur}ms, font-size #{$transDur}ms, padding #{$transDur}ms;
         user-select: none;
         pointer-events: none;
+        border-radius: #{$borderRadius / 2}px;
+        padding: #{$padding}px;
+        padding-bottom: 0;
+
+        &.light {
+            color: rgba($dark, 0.6);
+            background-color: white;
+        }
+
+        &.dark {
+            color: rgba($light, 0.6);
+            background-color: $dark;
+            
+        }
 
         &.focus {
-            top: 0;
+            top: -#{$padding}px;
             font-size: 0.85em;
+            
         }
 
         &.blur {
             top: #{$padding * 2.5}px;
             font-size: 1em;
+            padding-top: #{$padding}px;
         }
     }
 
     .input {
         flex: 1;
         border: none;
-        padding: #{$padding}px;
+        padding: #{$padding * 2}px;
         color: $dark;
         font-family: inherit;
         appearance: none;
         font-size: 1em;
-        box-shadow:   0px 1px 0px 0px $dark;
+        //box-shadow:   0px 1px 0px 0px rgba($dark, 0.6);
+        border-radius: #{$borderRadius / 2}px;
+        border: 1px solid rgba($dark, 0.6);
         transition: box-shadow #{$transDur}ms;
+        resize: none;
 
         &:focus {
-            box-shadow:   0px 3px 0px 0px $primary;
+            box-shadow:   0px 2px 0px 0px $primary;
             outline: none;
+        }
+
+        &.light {
+            color: $dark;
+            background-color: $light;
+        }
+
+        &.dark {
+            color: $light;
+            background-color: $dark;
         }
     }
 }

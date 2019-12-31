@@ -8,13 +8,17 @@ export default class Input extends Component {
     width: Proptypes.oneOf(['inline', 'full']),
     label: Proptypes.string.isRequired,
     value: Proptypes.string,
-    onChange: Proptypes.func
+    onChange: Proptypes.func,
+    rows: Proptypes.number,
+    color: Proptypes.oneOf(['light', 'dark'])
   }
 
   static defaultProps = {
     width: 'inline',
     label: 'Label',
-    onChange: () => console.log('value change')
+    onChange: () => console.log('value change'),
+    rows: 1,
+    color: 'light'
   }
 
   constructor(props) {
@@ -49,15 +53,30 @@ export default class Input extends Component {
 
     return (
       <div className={`${styles['inputContainer']} ${styles[this.props.width]}`}>
-        <div className={`${styles['label']} ${styles[mode]}`}>
+        <div className={`${styles['label']} ${styles[mode]} ${styles[this.props.color]}`}>
           {this.props.label}
         </div>
-        <input
-          className={styles['input']}
-          type='text' value={this.props.value}
-          onChange={this.props.onChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur} />
+        {
+          this.props.rows > 1 ? (
+            <textarea
+              className={`${styles['input']} ${styles[this.props.color]}`}
+              type='text' value={this.props.value}
+              onChange={this.props.onChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              rows={this.props.rows}
+            />
+          ) : (
+            <input
+              className={`${styles['input']} ${styles[this.props.color]}`}
+              type='text' value={this.props.value}
+              onChange={this.props.onChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+            />
+          )
+        }
+        
       </div>
     );
   }

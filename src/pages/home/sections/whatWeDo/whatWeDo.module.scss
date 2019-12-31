@@ -18,7 +18,7 @@ $whatWeDoBreakpoint: 972;
         .card {
             transition: transform 0.25s;
 
-            &:hover, &:active {
+            &:hover {
                 transform: translateY(-25px);
             }
             
@@ -28,7 +28,10 @@ $whatWeDoBreakpoint: 972;
 }
 
 @media screen and (max-width: #{$whatWeDoBreakpoint}px) {
-    .card-container .cards .second {
-        transform: translateY(0px);
+    .whatWeDo .cards {
+
+        .card:hover {
+            transform: translateY(0px);
+        }
     }
 }
