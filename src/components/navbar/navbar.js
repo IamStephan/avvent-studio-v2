@@ -149,7 +149,7 @@ export default class Navbar extends PureComponent {
           <nav
             className={`${styles['navbar']} ${styles['no-clip']}`}
           >
-            <section className={styles['branding']}>
+            <section className={styles['branding']} onClick={() => this.openPage('/')}>
               <img alt='Studio logo' src={require('../../static/branding/studio_logo_white.svg')} />
             </section>
 

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {observer, inject} from 'mobx-react';
 
+import globals from '../../../../utils/globals.scss';
 import styles from './whatWeHaveDone.module.scss';
 
 import Page from '../../../../components/pageTemplate/pageTemplate';
 import ArrowIcon from '@material-ui/icons/PlayCircleFilled';
+import PublicIcon from '@material-ui/icons/Public';
 import Card from '../../../../components/card/card';
 import Tag from '../../../../components/tag/tag';
 import Button from '../../../../components/button/button';
@@ -143,11 +145,18 @@ export default class WhatWeHaveDone extends Component {
               {PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].description}
             </p>
 
-            <div className={`${styles['actions']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
-              <Button onClick={() => this.openWindow(PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].url)}>
-                Visit Site
-              </Button>
-            </div>
+            {
+              PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].url ? (
+                <div className={`${styles['actions']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
+                  <Button color='light' style={{color: globals.dark}} onClick={() => this.openWindow(PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].url)}>
+                    Visit Site
+                    <PublicIcon style={{
+                      marginLeft: `${globals.margin}px`
+                    }} />
+                  </Button>
+                </div>
+              ) : null
+            }
 
             <div className={styles['controls']}>
               <div onClick={() => this.changeCard('left')} className={styles['left-control']}>
