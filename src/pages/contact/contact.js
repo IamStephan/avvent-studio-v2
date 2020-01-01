@@ -5,7 +5,7 @@ import Page from '../../components/pageTemplate/pageTemplate';
 import Contact from './sections/contact/contact';
 import MoreInfo from './sections/moreInfo/moreInfo';
 
-export default class Home extends Component {
+export default class ContactUs extends Component {
   render() {
     return (
       <Page

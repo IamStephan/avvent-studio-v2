@@ -5,7 +5,7 @@ import Page from '../../components/pageTemplate/pageTemplate';
 // Sections
 import Why from './sections/why/why';
 
-export default class Home extends Component {
+export default class App extends Component {
   render() {
     return (
       <Page
