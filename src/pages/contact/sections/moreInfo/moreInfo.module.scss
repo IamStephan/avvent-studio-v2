@@ -1,0 +1,78 @@
+@import '../../../../utils/globals.scss';
+
+$breakpointOne: 560;
+
+.moreInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    
+    .row {
+        display: flex;
+        justify-content: center;
+        padding-left: #{$padding * 2}px;
+        padding-right: #{$padding * 2}px;
+        margin-bottom: #{$margin * 3}px;
+
+        .item {
+            flex: 1;
+            background-color: $light;
+            max-width: 600px;
+            display: flex;
+            padding: #{$padding * 2}px;
+            border-radius: #{$borderRadius}px;
+
+            .icon {
+                object-fit: contain;
+                width: 100px;
+                height: 100px;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+
+                .title {
+                    margin-bottom: #{$margin}px;
+                    margin-left: #{$margin * 2}px;
+                }
+
+                .info {
+                    display: flex;
+                    justify-content: space-around;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: #{$breakpointOne}px) {
+    .moreInfo {
+        .row {
+            .item {
+                .content {
+                    .info {
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+
+                        div {
+                            margin-bottom: #{$margin}px;;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
