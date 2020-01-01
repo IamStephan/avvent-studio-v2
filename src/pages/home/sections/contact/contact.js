@@ -237,7 +237,7 @@ export default class Contact extends Component {
         </Page.SectionTitle>
         <div className={styles['contact']}>
           <div className={styles['left']}>
-            <img alt='Contact us' src={require('../../../../static/illustrations/contact_2.svg')} />
+            <img alt='Contact us' src={require('../../../../static/illustrations/contact_3.svg')} />
           </div>
 
           <div className={styles['right']}>

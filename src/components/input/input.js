@@ -54,7 +54,7 @@ export default class Input extends Component {
   }
 
   render() {
-    const mode = this.state.isFocus ? 'focus' : 'blur'
+    const mode = (this.props.value && this.state.isFocus) ? 'focus' : 'blur'
     const error = this.props.error ? 'error' : null
 
     return (
