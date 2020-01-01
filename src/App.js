@@ -23,6 +23,11 @@ const Home = Loadable({
   loading: () => <Loader />
 })
 
+const About = Loadable({
+  loader: () => import('./pages/about/about'),
+  loading: () => <Loader />
+})
+
 const Contact = Loadable({
   loader: () => import('./pages/contact/contact'),
   loading: () => <Loader />
@@ -44,6 +49,7 @@ class App extends Component {
           <Notifications />
           <Switch>
             <Route component={Home} exact path='/' />
+            <Route component={About} exact path='/about' />
             <Route component={Contact} exact path='/contact' />
             <Route component={NotFound} />
           </Switch>

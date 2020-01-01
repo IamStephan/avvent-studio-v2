@@ -4,6 +4,7 @@ import globals from '../../../../utils/globals.scss';
 import styles from './hero.module.scss';
 
 import Page from '../../../../components/pageTemplate/pageTemplate';
+import ContactIcon from '@material-ui/icons/Call';
 import Button from '../../../../components/button/button';
 
 export default class Hero extends Component {
@@ -30,7 +31,12 @@ export default class Hero extends Component {
             </p>
             
             <div className={styles['actions']}>
-              <Button>Contact Us</Button>
+              <Button>
+                Contact Us
+                <ContactIcon style={{
+                  marginLeft: `${globals.margin}px`
+                }} />
+              </Button>
             </div>
           </div>         
    

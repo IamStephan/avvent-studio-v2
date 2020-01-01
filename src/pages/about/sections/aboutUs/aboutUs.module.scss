@@ -4,7 +4,7 @@ $howWeDoItBreakpoint: 830;
 
 $transDur: 100;
 
-.howWeDoIt {
+.aboutUs {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -38,23 +38,6 @@ $transDur: 100;
             width: 300px;
             transition: transform #{$transDur}ms;
 
-            &:before {
-                content: attr(count);
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                height: 50px;
-                width: 50px;
-                font-size: 1.5em;
-                background-color: $primary;
-                border-radius: 50%;
-                z-index: 10;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: $light;
-            }
-
             img {
                 position: absolute;
                 width: 100%;
@@ -76,7 +59,7 @@ $transDur: 100;
 }
 
 @media screen and (max-width: #{$howWeDoItBreakpoint}px) {
-    .howWeDoIt .row {
+    .aboutUs .row {
         flex-direction: column;
         margin-bottom: 50px;
 

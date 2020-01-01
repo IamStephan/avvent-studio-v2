@@ -5,7 +5,7 @@ import styles from './moreInfo.module.scss';
 
 import Page from '../../../../components/pageTemplate/pageTemplate';
 
-export default class MoreInof extends Component {
+export default class MoreInfo extends Component {
   render() {
     return (
       <Page.Section navbarMode='primary' display='flex'>

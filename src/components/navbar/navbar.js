@@ -108,6 +108,8 @@ export default class Navbar extends PureComponent {
 
   openPage(url) {
     this.props.history.push(url)
+
+    this.closeService()
   }
 
   openService() {
@@ -263,7 +265,7 @@ export default class Navbar extends PureComponent {
       <nav
         className={`${styles['navbar']} ${styles[this.props.mode]}`}
       >
-        <section className={styles['branding']}>
+        <section className={styles['branding']} onClick={() => this.openPage('/')}>
           {
             this.props.mode === 'light' ? (
               <img alt='Studio Logo' src={require('../../static/branding/studio_logo.svg')} />

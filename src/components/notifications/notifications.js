@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react';
 
 import styles from './notifications.module.scss';
 
-import HelpIcon from '@material-ui/icons/Help';
+import InfoIcon from '@material-ui/icons/Info';
 import WarnIcon from '@material-ui/icons/Warning';
 import ErrorIcon from '@material-ui/icons/Error';
 
@@ -21,7 +21,7 @@ export default class Notifications extends Component {
               <div className={styles['icon']}>
                 {
                   item.type === 'info' ? (
-                    <HelpIcon />
+                    <InfoIcon />
                   ) : item.type === 'warn' ? (
                     <WarnIcon />
                   ) : (

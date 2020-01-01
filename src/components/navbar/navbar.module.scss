@@ -30,6 +30,7 @@ $navbarHeight: 75;
         position: relative;
         padding: #{$padding * 3}px;
         margin-left: #{$margin * 3}px;
+        cursor: pointer;
 
         img {
             height: 100%;
