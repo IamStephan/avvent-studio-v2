@@ -2,6 +2,8 @@
 
 $howWeDoItBreakpoint: 830;
 
+$transDur: 100;
+
 .howWeDoIt {
     position: relative;
     display: flex;
@@ -14,6 +16,12 @@ $howWeDoItBreakpoint: 830;
         justify-content: space-around;
         align-items: center;
 
+        &:hover {
+            .img-container {
+                transform: scale(1.1);
+            }
+        }
+
         &.reverse {
             flex-direction: row-reverse;
         }
@@ -24,6 +32,7 @@ $howWeDoItBreakpoint: 830;
             margin: #{$margin * 2}px;
             min-height: 300px;
             width: 300px;
+            transition: transform #{$transDur}ms;
 
             &:before {
                 content: attr(count);
