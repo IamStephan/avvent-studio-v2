@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>https://studio.avvent.io/</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2020-01-01</lastmod>
+  </url>
+  <url>
+    <loc>https://studio.avvent.io/ecommerce</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2020-01-01</lastmod>
+  </url>
+  <url>
+    <loc>https://studio.avvent.io/web</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2020-01-01</lastmod>
+  </url>
+  <url>
+    <loc>https://studio.avvent.io/app</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2020-01-01</lastmod>
+  </url>
+  <url>
+    <loc>https://studio.avvent.io/about</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2020-01-01</lastmod>
+  </url>
+  <url>
+    <loc>https://studio.avvent.io/contact</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2020-01-01</lastmod>
+  </url>
+</urlset>
