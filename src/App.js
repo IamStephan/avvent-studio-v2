@@ -23,6 +23,21 @@ const Home = Loadable({
   loading: () => <Loader />
 })
 
+const Ecommerce = Loadable({
+  loader: () => import('./pages/eCommerce/ecommerce'),
+  loading: () => <Loader />
+})
+
+const Web = Loadable({
+  loader: () => import('./pages/web/web'),
+  loading: () => <Loader />
+})
+
+const AppPage = Loadable({
+  loader: () => import('./pages/app/app'),
+  loading: () => <Loader />
+})
+
 const About = Loadable({
   loader: () => import('./pages/about/about'),
   loading: () => <Loader />
@@ -49,6 +64,9 @@ class App extends Component {
           <Notifications />
           <Switch>
             <Route component={Home} exact path='/' />
+            <Route component={Ecommerce} exact path='/ecommerce' />
+            <Route component={Web} exact path='/web' />
+            <Route component={AppPage} exact path='/app' />
             <Route component={About} exact path='/about' />
             <Route component={Contact} exact path='/contact' />
             <Route component={NotFound} />

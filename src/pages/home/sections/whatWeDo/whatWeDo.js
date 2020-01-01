@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import globals from '../../../../utils/globals.scss';
 import styles from './whatWeDo.module.scss';
@@ -8,7 +9,18 @@ import Page from '../../../../components/pageTemplate/pageTemplate';
 import Button from '../../../../components/button/button';
 import Card from '../../../../components/card/card';
 
+@withRouter
 export default class WhatWeDo extends Component {
+  constructor(props) {
+    super(props)
+
+    this.openPage = this.openPage.bind(this)
+  }
+
+  openPage(url) {
+    this.props.history.push(url)
+  }
+
   render() {
     return (
       <Page.Section navbarMode='primary'>
@@ -28,7 +40,7 @@ export default class WhatWeDo extends Component {
               </Card.Content>
 
               <Card.Actions>
-                <Button>
+                <Button onClick={() => this.openPage('/ecommerce')}>
                   Learn More
                   <InfoIcon style={{
                     marginLeft: `${globals.margin}px`
@@ -48,7 +60,7 @@ export default class WhatWeDo extends Component {
               </Card.Content>
 
               <Card.Actions>
-                <Button>
+                <Button onClick={() => this.openPage('/web')}>
                   Learn More
                   <InfoIcon style={{
                     marginLeft: `${globals.margin}px`
@@ -68,7 +80,7 @@ export default class WhatWeDo extends Component {
               </Card.Content>
 
               <Card.Actions>
-                <Button>
+                <Button onClick={() => this.openPage('/app')}>
                   Learn More
                   <InfoIcon style={{
                     marginLeft: `${globals.margin}px`

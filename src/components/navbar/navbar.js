@@ -223,16 +223,6 @@ export default class Navbar extends PureComponent {
                     }}
                   >
                     <Button
-                      color={this.props.location.pathname === '/web' ? 'primary' : 'light'}
-                      variant={this.props.location.pathname === '/web' ? 'contained' : 'ghost'}
-                      onClick={() => this.openPage('/web')}
-                      style={{
-                        marginBottom: `${globals.margin}px`,
-                      }}
-                    >
-                        Website | Webapp
-                      </Button>
-                    <Button
                       color={this.props.location.pathname === '/ecommerce' ? 'primary' : 'light'}
                       variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'ghost'}
                       onClick={() => this.openPage('/ecommerce')}
@@ -241,6 +231,16 @@ export default class Navbar extends PureComponent {
                       }}
                     >
                       E-commerce
+                    </Button>
+                    <Button
+                      color={this.props.location.pathname === '/web' ? 'primary' : 'light'}
+                      variant={this.props.location.pathname === '/web' ? 'contained' : 'ghost'}
+                      onClick={() => this.openPage('/web')}
+                      style={{
+                        marginBottom: `${globals.margin}px`,
+                      }}
+                    >
+                        Website | Webapp
                     </Button>
                     <Button
                       color={this.props.location.pathname === '/app' ? 'primary' : 'light'}
@@ -350,16 +350,6 @@ export default class Navbar extends PureComponent {
                 }}
               >
                 <Button
-                  color={this.getColorForSelected(this.props.location.pathname === '/web', 'dropdown')}
-                  variant={this.props.location.pathname === '/web' ? 'contained' : 'ghost'}
-                  onClick={() => this.openPage('/web')}
-                  style={{
-                    marginBottom: `${globals.margin}px`,
-                  }}
-                >
-                    Website | Webapp
-                  </Button>
-                <Button
                   color={this.getColorForSelected(this.props.location.pathname === '/ecommerce', 'dropdown')}
                   variant={this.props.location.pathname === '/ecommerce' ? 'contained' : 'ghost'}
                   onClick={() => this.openPage('/ecommerce')}
@@ -369,6 +359,17 @@ export default class Navbar extends PureComponent {
                 >
                   E-commerce
                 </Button>
+                <Button
+                  color={this.getColorForSelected(this.props.location.pathname === '/web', 'dropdown')}
+                  variant={this.props.location.pathname === '/web' ? 'contained' : 'ghost'}
+                  onClick={() => this.openPage('/web')}
+                  style={{
+                    marginBottom: `${globals.margin}px`,
+                  }}
+                >
+                    Website | Webapp
+                </Button>
+                
                 <Button
                   color={this.getColorForSelected(this.props.location.pathname === '/app', 'dropdown')}
                   variant={this.props.location.pathname === '/app' ? 'contained' : 'ghost'}

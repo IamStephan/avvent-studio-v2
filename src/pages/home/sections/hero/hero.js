@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import globals from '../../../../utils/globals.scss';
 import styles from './hero.module.scss';
@@ -7,7 +8,18 @@ import Page from '../../../../components/pageTemplate/pageTemplate';
 import ContactIcon from '@material-ui/icons/Call';
 import Button from '../../../../components/button/button';
 
+@withRouter
 export default class Hero extends Component {
+  constructor(props) {
+    super(props)
+
+    this.openPage = this.openPage.bind(this)
+  }
+
+  openPage(url) {
+    this.props.history.push(url)
+  }
+
   render() {
     return (
       <Page.Section
@@ -31,7 +43,7 @@ export default class Hero extends Component {
             </p>
             
             <div className={styles['actions']}>
-              <Button>
+              <Button onClick={() => this.openPage('/contact')}>
                 Contact Us
                 <ContactIcon style={{
                   marginLeft: `${globals.margin}px`
