@@ -78,5 +78,9 @@ $transDur: 100;
             color: $light;
             background-color: $dark;
         }
+
+        &.error {
+            border: 2px solid $secondary;
+        }
     }
 }

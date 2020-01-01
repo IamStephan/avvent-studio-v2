@@ -228,7 +228,7 @@ export default class Contact extends Component {
     return (
       <Page.Section navbarMode='light' display='flex'>
         <Page.SectionTitle>
-          Let us do it
+          Let us do it together
           <span style={{
             color: globals.primary
           }}>

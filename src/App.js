@@ -6,13 +6,16 @@ import Loadable from 'react-loadable';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
 import Loader from './components/pageLoader/loader';
 import Sidebar from './components/sidebar/sidebar';
+import Notifications from './components/notifications/notifications';
 
 import AppStore from './stores/appStore'
 import PortfolioStore from './stores/portfolioStore'
+import NotificationStore from './stores/notificationStore';
 
 const stores = {
   AppStore,
-  PortfolioStore
+  PortfolioStore,
+  NotificationStore
 }
 
 const Home = Loadable({
@@ -20,6 +23,10 @@ const Home = Loadable({
   loading: () => <Loader />
 })
 
+const Contact = Loadable({
+  loader: () => import('./pages/contact/contact'),
+  loading: () => <Loader />
+})
 
 const NotFound = Loadable({
   loader: () => import('./pages/notFound/notFound'),
@@ -34,8 +41,10 @@ class App extends Component {
         <Router>
           <ScrollToTop />
           <Sidebar />
+          <Notifications />
           <Switch>
             <Route component={Home} exact path='/' />
+            <Route component={Contact} exact path='/contact' />
             <Route component={NotFound} />
           </Switch>
         </Router>

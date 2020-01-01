@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Proptypes from 'prop-types';
 
+import globals from '../../utils/globals.scss';
 import styles from './input.module.scss';
 
 export default class Input extends Component {
@@ -10,7 +11,9 @@ export default class Input extends Component {
     value: Proptypes.string,
     onChange: Proptypes.func,
     rows: Proptypes.number,
-    color: Proptypes.oneOf(['light', 'dark'])
+    color: Proptypes.oneOf(['light', 'dark']),
+    isRequired: Proptypes.bool,
+    error: Proptypes.bool
   }
 
   static defaultProps = {
@@ -18,7 +21,9 @@ export default class Input extends Component {
     label: 'Label',
     onChange: () => console.log('value change'),
     rows: 1,
-    color: 'light'
+    color: 'light',
+    isRequired: false,
+    error: false
   }
 
   constructor(props) {
@@ -50,16 +55,28 @@ export default class Input extends Component {
 
   render() {
     const mode = this.state.isFocus ? 'focus' : 'blur'
+    const error = this.props.error ? 'error' : null
 
     return (
       <div className={`${styles['inputContainer']} ${styles[this.props.width]}`}>
         <div className={`${styles['label']} ${styles[mode]} ${styles[this.props.color]}`}>
-          {this.props.label}
+          {this.props.label} {' '}
+          {
+            this.props.isRequired ? (
+              <span
+                style={{
+                  color: globals.secondary
+                }}
+              >
+                *
+              </span>
+            ) : null
+          }
         </div>
         {
           this.props.rows > 1 ? (
             <textarea
-              className={`${styles['input']} ${styles[this.props.color]}`}
+              className={`${styles['input']} ${styles[this.props.color]} ${styles[error]}`}
               type='text' value={this.props.value}
               onChange={this.props.onChange}
               onFocus={this.handleFocus}
@@ -68,7 +85,7 @@ export default class Input extends Component {
             />
           ) : (
             <input
-              className={`${styles['input']} ${styles[this.props.color]}`}
+              className={`${styles['input']} ${styles[this.props.color]} ${styles[error]}`}
               type='text' value={this.props.value}
               onChange={this.props.onChange}
               onFocus={this.handleFocus}

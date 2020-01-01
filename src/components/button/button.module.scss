@@ -27,17 +27,20 @@ $animMs: 750;
         height: #{$loaderSize}px;
         width: #{$loaderSize}px;
         border-radius: 50%;
+        
         animation: loader #{$animMs}ms ease-in-out infinite;
 
         @if $variant == 'contained' {
-            border: #{$loaderBorder}px solid $light;
-            border-left-color: transparent;
-            border-right-color: transparent;
+            @if $color == $light {
+                border: #{$loaderBorder}px solid $primary;
+            } @else {
+                border: #{$loaderBorder}px solid $light;
+            }
         } @else {
             border: #{$loaderBorder}px solid $color;
-            border-left-color: transparent;
-            border-right-color: transparent;
         }
+        border-left-color: transparent;
+        border-right-color: transparent;
     }
 }
 
