@@ -1,0 +1,52 @@
+@import '../../utils/globals.scss';
+
+.tag {
+    border-radius: 99px;
+    font-size: 0.75em;
+    padding: #{$padding / 2}px #{$padding}px #{$padding / 2}px #{$padding}px;
+    margin: #{$margin}px;
+
+    &.contained {
+        &.primary {
+            color: $light;
+            background-color: $primary;
+            border: 1px solid $primary;
+        }
+        &.secondary {
+            color: $light;
+            background-color: $secondary;
+            border: 1px solid $secondary;
+        }
+        &.light {
+            color: $dark;
+            background-color: $light;
+            border: 1px solid $light;
+        }
+        &.dark {
+            color: $light;
+            background-color: $dark;
+            border: 1px solid $dark;
+        }
+    }
+
+    &.outlined {
+        background-color: transparent;
+
+        &.primary {
+            color: $primary;
+            border: 1px solid $primary;
+        }
+        &.secondary {
+            color: $secondary;
+            border: 1px solid $secondary;
+        }
+        &.light {
+            color: $light;
+            border: 1px solid $light;
+        }
+        &.dark {
+            color: $dark;
+            border: 1px solid $dark;
+        }
+    }
+}

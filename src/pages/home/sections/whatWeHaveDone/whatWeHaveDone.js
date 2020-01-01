@@ -6,6 +6,8 @@ import styles from './whatWeHaveDone.module.scss';
 import Page from '../../../../components/pageTemplate/pageTemplate';
 import ArrowIcon from '@material-ui/icons/PlayCircleFilled';
 import Card from '../../../../components/card/card';
+import Tag from '../../../../components/tag/tag';
+import Button from '../../../../components/button/button';
 
 @inject('PortfolioStore')
 @observer
@@ -21,6 +23,11 @@ export default class WhatWeHaveDone extends Component {
     }
 
     this.changeCard = this.changeCard.bind(this)
+    this.openWindow = this.openWindow.bind(this)
+  }
+
+  openWindow(url) {
+    window.open(url)
   }
 
   changeCard(direction) {
@@ -124,9 +131,23 @@ export default class WhatWeHaveDone extends Component {
               {PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].title}
             </h1>
 
+            <div className={`${styles['tags']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
+              {PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].tags.map((item, i) => (
+                <Tag key={i} color='secondary'>
+                  {item}
+                </Tag>
+              ))}
+            </div>
+
             <p className={`${styles['content']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
               {PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].description}
             </p>
+
+            <div className={`${styles['actions']} ${styles[this.state.whatWeHaveDone.transitionState]}`}>
+              <Button onClick={() => this.openWindow(PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].url)}>
+                Visit Site
+              </Button>
+            </div>
 
             <div className={styles['controls']}>
               <div onClick={() => this.changeCard('left')} className={styles['left-control']}>

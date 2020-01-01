@@ -31,6 +31,20 @@ $whatWeHaveDonetransitionDur: 500;
             }
         }
 
+        .tags {
+            display: flex;
+            justify-content: center;
+            transition: opacity #{$whatWeHaveDonetransitionDur}ms;
+
+            &.start {
+                opacity: 0;
+            }
+
+            &.end {
+                opacity: 1;
+            }
+        }
+
         .content {
             max-width: 450px;
             text-align: center;
