@@ -302,6 +302,7 @@ export default class Contact extends Component {
                   width='full'
                   isRequired
                   error={this.state.contact.first.error}
+                  labelAss='first'
                 />
                 <Input
                   color='dark'
@@ -311,6 +312,7 @@ export default class Contact extends Component {
                   width='full'
                   isRequired
                   error={this.state.contact.last.error}
+                  labelAss='last'
                 />
               </div>
               
@@ -323,6 +325,7 @@ export default class Contact extends Component {
                   width='full'
                   isRequired
                   error={this.state.contact.email.error}
+                  labelAss='email'
                 />
               </div>
 
@@ -336,6 +339,7 @@ export default class Contact extends Component {
                   rows={4}
                   isRequired
                   error={this.state.contact.projectDesc.error}
+                  labelAss='projectDesc'
                 />
               </div>
               <div className={styles['action']}>

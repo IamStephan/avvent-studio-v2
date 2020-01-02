@@ -13,7 +13,8 @@ export default class Input extends Component {
     rows: Proptypes.number,
     color: Proptypes.oneOf(['light', 'dark']),
     isRequired: Proptypes.bool,
-    error: Proptypes.bool
+    error: Proptypes.bool,
+    labelAss: Proptypes.string.isRequired
   }
 
   static defaultProps = {
@@ -59,7 +60,7 @@ export default class Input extends Component {
 
     return (
       <div className={`${styles['inputContainer']} ${styles[this.props.width]}`}>
-        <div className={`${styles['label']} ${styles[mode]} ${styles[this.props.color]}`}>
+        <label for={this.props.labelAss} className={`${styles['label']} ${styles[mode]} ${styles[this.props.color]}`}>
           {this.props.label} {' '}
           {
             this.props.isRequired ? (
@@ -72,16 +73,19 @@ export default class Input extends Component {
               </span>
             ) : null
           }
-        </div>
+        </label>
         {
           this.props.rows > 1 ? (
             <textarea
               className={`${styles['input']} ${styles[this.props.color]} ${styles[error]}`}
-              type='text' value={this.props.value}
+              type='text'
+              value={this.props.value}
               onChange={this.props.onChange}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               rows={this.props.rows}
+              id={this.props.labelAss}
+              {...this.props}
             />
           ) : (
             <input
@@ -90,6 +94,8 @@ export default class Input extends Component {
               onChange={this.props.onChange}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
+              id={this.props.labelAss}
+              {...this.props}
             />
           )
         }
