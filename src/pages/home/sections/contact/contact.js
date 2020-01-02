@@ -135,7 +135,7 @@ export default class Contact extends Component {
       }
     })
 
-    setTimeout(() => {
+    setTimeout(async () => {
       let errors = []
       if(!this.state.contact.first.value || this.state.contact.first.value.length === 0 || /^\s*$/.test(this.state.contact.first.value)) {
         this.setState({
@@ -203,8 +203,6 @@ export default class Contact extends Component {
           })
         }, 0)
       } else {
-        
-        
         let PostRequest = {
           body: `${this.state.contact.first.value} ${this.state.contact.last.value}
           
