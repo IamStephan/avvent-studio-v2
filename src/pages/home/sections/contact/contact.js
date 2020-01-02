@@ -218,7 +218,7 @@ export default class Contact extends Component {
           })
       
           if (!response.ok) {
-            this.props.NotificationStore.AddNotification('error', 'Error', JSON.stringify(response))
+            this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
             setTimeout(() => {
               this.setState({
                 ...this.state,
@@ -253,7 +253,7 @@ export default class Contact extends Component {
               }
             })
           }, 10)
-          this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited 2')
+          this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
         }
 
         this.clearContact()
