@@ -212,7 +212,7 @@ export default class Contact extends Component {
         }
 
         try{
-          const response = await fetch("/.netlify/functions/contact", {
+          const response = await fetch("https://studio.avvent.io/.netlify/functions/contact", {
             method: "POST",
             body: JSON.stringify(PostRequest),
           })
