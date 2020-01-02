@@ -36,7 +36,7 @@ export default class WhatWeDo extends Component {
               </Card.Title>
 
               <Card.Content>
-                Push your business across the borders and grow by allowing customers to buy your products directly from your website. That way you are able to maintain the look and you feel of your business.
+                Push your business across the borders and grow by allowing customers to buy your products directly from your website. That way you can maintain the look and you feel of your business.
               </Card.Content>
 
               <Card.Actions>
@@ -76,7 +76,7 @@ export default class WhatWeDo extends Component {
               </Card.Title>
 
               <Card.Content>
-                Simplify your business flow or simply make your customer's life more convenient. With our expertise you can expect both beautiful and functional mobile and/or desktop application for your business.
+                Simplify your business flow or simply make your customer's life more convenient. With our expertise, you can expect both beautiful and functional mobile and/or desktop applications for your business.
               </Card.Content>
 
               <Card.Actions>

@@ -34,7 +34,7 @@ export default class AboutUs extends Component {
                   .
                 </span>
               </h2>
-                We want to push the world beyond imagination. With all the possiblities of technology, how could we not?
+                We want to push the world beyond imagination. With all the possibilities of technology, how could we not?
             </div>
           </div>
 
@@ -52,7 +52,7 @@ export default class AboutUs extends Component {
                   .
                 </span>
               </h2>
-               Besides pushing the world we want to do so with 3 key factors in mind; security, functunality and user experience.
+               Besides pushing the world we want to do so with 3 key factors in mind; security, functionality and user experience.
             </div>
           </div>
 
@@ -70,7 +70,7 @@ export default class AboutUs extends Component {
                   .
                 </span>
               </h2>
-               With enough discipline and creativity we can accomplish anything we set our minds to.
+               With enough discipline and creativity, we can accomplish anything we set our minds to.
             </div>
           </div>
         </div>

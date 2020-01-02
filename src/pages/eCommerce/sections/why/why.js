@@ -5,6 +5,7 @@ import globals from '../../../../utils/globals.scss';
 import styles from './why.module.scss';
 
 import Page from '../../../../components/pageTemplate/pageTemplate';
+import ContactIcon from '@material-ui/icons/Call';
 import Button from '../../../../components/button/button';
 
 @withRouter
@@ -39,7 +40,7 @@ export default class Why extends Component {
           <div className={styles['right']}>
             <div className={styles['container']}>
               <h2 className={styles['title']}>
-                Why do you need an e-commerce sites?
+                Why do you need an e-commerce site?
               </h2>
               <br />
               <div className={styles['content']}>
@@ -47,20 +48,23 @@ export default class Why extends Component {
               </div>
               <br />
               <div className={styles['content']}>
-                Already have a website? No need for concern, we will integrate your online shop directly into an existing website (provided the website is done properly).
+                Already have a website? No need for concern, we will integrate your online shop directly into an existing website.
               </div>
               <br />
               <div className={styles['content']}>
-                Need both a website and an online shop. We've got you covered. We can provide you with a website and an online shop with a unique experience that your customers will love.
+                Need both a website and an online shop? We've got you covered. We can provide you with a website and an online shop with a unique experience that your customers will love.
               </div>
               <br />
               <div className={styles['content']}>
-                Feel free to contact us
+                Feel free to contact us.
               </div>
               <br />
               <div>
                 <Button color='light' style={{color: globals.dark}} onClick={() => this.openPage('/contact')}>
                   Contact us
+                  <ContactIcon style={{
+                    marginLeft: `${globals.margin}px`
+                  }} />
                 </Button>
               </div>
             </div>

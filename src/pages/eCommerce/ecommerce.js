@@ -9,7 +9,7 @@ export default class Ecommerce extends Component {
   render() {
     return (
       <Page
-        title='Avvent Studio: Website | Web app'
+        title='Avvent Studio: E-commerce'
         description='Let customers by products or services directly from your website.'
       >
         <Why />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import globals from '../../../../utils/globals.scss';
+import ContactIcon from '@material-ui/icons/Call';
 import styles from './why.module.scss';
 
 import Page from '../../../../components/pageTemplate/pageTemplate';
@@ -39,11 +40,11 @@ export default class Why extends Component {
           <div className={styles['right']}>
             <div className={styles['container']}>
               <h2 className={styles['title']}>
-                Why do you need a website or web app?
+                Why do you need a website or a web app?
               </h2>
               <br />
               <div className={styles['content']}>
-                Having an online presence in todays world is an absolute must to survive. But who wants to survive when you have an opportunity to thrive. Don't just be online, show the world what your business is about and do so with your vision. This can be achieved in two manners.
+                Having an online presence in today's world is an absolute must to survive. But who wants to survive when you have an opportunity to thrive. Don't just be online, show the world what your business is about and do so with your vision. This can be achieved in two manners.
               </div>
               <br />
               <div className={styles['content']}>
@@ -51,7 +52,7 @@ export default class Why extends Component {
               </div>
               <br />
               <div className={styles['content']}>
-                Does your business offer more? Online bookings? Item tracking? You need a web app. Your customers can do it all on your website. No need for third party services, it can all be directly on your web app. Fewer clicks make for a happier customer
+                Does your business offer more? Online bookings? Item tracking? You need a web app. Your customers can do it all on your website. No need for third-party services, it can all be directly on your web app. Fewer clicks make for a happier customer
               </div>
               <br />
               <div className={styles['content']}>
@@ -61,6 +62,9 @@ export default class Why extends Component {
               <div>
                 <Button color='light' style={{color: globals.dark}} onClick={() => this.openPage('/contact')}>
                   Contact us
+                  <ContactIcon style={{
+                    marginLeft: `${globals.margin}px`
+                  }} />
                 </Button>
               </div>
             </div>

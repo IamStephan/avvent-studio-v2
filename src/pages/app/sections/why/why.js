@@ -5,6 +5,7 @@ import globals from '../../../../utils/globals.scss';
 import styles from './why.module.scss';
 
 import Page from '../../../../components/pageTemplate/pageTemplate';
+import ContactIcon from '@material-ui/icons/Call';
 import Button from '../../../../components/button/button';
 
 @withRouter
@@ -43,24 +44,28 @@ export default class Why extends Component {
               </h2>
               <br />
               <div className={styles['content']}>
-                Do you have an unique way of getting things done? Native applications can help you improve the productivity of your business by having them locally on your desktop and smartphone.
+                Do you have a unique way of getting things done? Native applications can help you improve the productivity of your business by having them locally on your desktop and smartphone.
               </div>
               <br />
               <div className={styles['content']}>
-                Want your customers to interact with you business locally on their phone? Native apps provide you with the best solution. Customers can experience your business functionality directly on their phone with superb performance.
+                Want your customers to interact with your business locally on their phone? Native apps provide you with the best solution. Customers can experience your business functionality directly on their phone with superb performance.
               </div>
               <br />
               <div className={styles['content']}>
-                Do you have an idea but can't implement it yourself? We can help you bring your idea to life. Native apps are perfect for user engagement. Don't just outshine your compitition but show your customers what is possible.
+                Do you have an idea but can't implement it yourself? We can help you bring your idea to life. Native apps are perfect for user engagement. Don't just outshine your competition but show your customers what is possible.
               </div>
               <br />
               <div className={styles['content']}>
-                Show your customers how a business can be of world-class standards
+                Show your customers how a business can be of world-class standards.
               </div>
               <br />
               <div>
                 <Button color='light' style={{color: globals.dark}} onClick={() => this.openPage('/contact')}>
                   Contact us
+                  
+                  <ContactIcon style={{
+                    marginLeft: `${globals.margin}px`
+                  }} />
                 </Button>
               </div>
             </div>
