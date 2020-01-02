@@ -1,12 +1,11 @@
 const sgMail = require('@sendgrid/mail')
-const { SENDGRID_API_KEY } = process.env
 
 exports.handler =  async (event, context, callback) => {
 
     const payload = JSON.parse(event.body)
     const { body } = payload
 
-    sgMail.setApiKey(SENDGRID_API_KEY)
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     const msg = {
         to: 'info@avvent.io',
