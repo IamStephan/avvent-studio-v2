@@ -60,7 +60,7 @@ export default class Input extends Component {
 
     return (
       <div className={`${styles['inputContainer']} ${styles[this.props.width]}`}>
-        <label for={this.props.labelAss} className={`${styles['label']} ${styles[mode]} ${styles[this.props.color]}`}>
+        <label htmlFor={this.props.labelAss} className={`${styles['label']} ${styles[mode]} ${styles[this.props.color]}`}>
           {this.props.label} {' '}
           {
             this.props.isRequired ? (
@@ -85,7 +85,6 @@ export default class Input extends Component {
               onBlur={this.handleBlur}
               rows={this.props.rows}
               id={this.props.labelAss}
-              {...this.props}
             />
           ) : (
             <input
@@ -95,7 +94,6 @@ export default class Input extends Component {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               id={this.props.labelAss}
-              {...this.props}
             />
           )
         }
