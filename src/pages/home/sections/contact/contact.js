@@ -203,16 +203,61 @@ export default class Contact extends Component {
           })
         }, 0)
       } else {
-        this.props.NotificationStore.AddNotification('info', 'Success', 'Your form has been submited, Thank you!')
-        setTimeout(() => {
-          this.setState({
-            ...this.state,
-            contact: {
-              ...this.state.contact,
-              loadingButton: false
-            }
+        
+        
+        let PostRequest = {
+          body: `${this.state.contact.first.value} ${this.state.contact.last.value}
+          
+          ${this.state.contact.email.value}
+          
+          ${this.state.contact.projectDesc.value}`
+        }
+
+        try{
+          const response = await fetch("/.netlify/functions/contact", {
+            method: "POST",
+            body: JSON.stringify(PostRequest),
           })
-        }, 0)
+      
+          if (!response.ok) {
+            this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
+            setTimeout(() => {
+              this.setState({
+                ...this.state,
+                contact: {
+                  ...this.state.contact,
+                  loadingButton: false
+                }
+              })
+            }, 10)
+            return
+          }
+
+          setTimeout(() => {
+            this.setState({
+              ...this.state,
+              contact: {
+                ...this.state.contact,
+                loadingButton: false
+              }
+            })
+          }, 10)
+          this.clearContact()
+          this.props.NotificationStore.AddNotification('info', 'Success', 'Your form has been submited, Thank you!')
+          
+        } catch(e){
+          setTimeout(() => {
+            this.setState({
+              ...this.state,
+              contact: {
+                ...this.state.contact,
+                loadingButton: false
+              }
+            })
+          }, 10)
+          this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
+        }
+
         this.clearContact()
       } 
     }, 0)
