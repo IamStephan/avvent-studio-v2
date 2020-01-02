@@ -51,7 +51,7 @@ export default class MoreInfo extends Component {
           <div className={styles['row']}>
             <div className={styles['item']}>
               <div className={styles['icon']}>
-                <img alt='Business hours.' src={require('../../../../static/illustrations/mail.svg')} />
+                <img alt='Mailing info' src={require('../../../../static/illustrations/mail.svg')} />
               </div>
 
               <div className={styles['content']}>
@@ -84,7 +84,7 @@ export default class MoreInfo extends Component {
           <div className={styles['row']}>
             <div className={styles['item']}>
               <div className={styles['icon']}>
-                <img alt='Business hours.' src={require('../../../../static/illustrations/phone.svg')} />
+                <img alt='Contact info' src={require('../../../../static/illustrations/phone.svg')} />
               </div>
 
               <div className={styles['content']}>

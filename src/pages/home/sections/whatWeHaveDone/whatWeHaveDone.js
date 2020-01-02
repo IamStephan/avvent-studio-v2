@@ -184,6 +184,7 @@ export default class WhatWeHaveDone extends Component {
               <Card className={styles['card']}>
                 <Card.Media
                   src={this.state.whatWeHaveDone.transitionState === 'end' ? PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].img : null}
+                  alt={PortfolioStore.projects[this.state.whatWeHaveDone.currentIndex].title}
                   mode='cover'
                   height={450}
                 />

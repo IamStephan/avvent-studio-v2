@@ -33,7 +33,7 @@ export default class Why extends Component {
 
         <div className={styles['why']}>
           <div className={styles['left']}>
-            <img alt='E-commerce' src={require('../../../../static/illustrations/app_1.svg')} />
+            <img alt='App' src={require('../../../../static/illustrations/app_1.svg')} />
           </div>
 
           <div className={styles['right']}>

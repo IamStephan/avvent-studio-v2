@@ -56,7 +56,7 @@ export default class HowWeDoIt extends Component {
 
           <div className={styles['row']}>
             <div count={3} className={styles['img-container']}>
-              <img alt='We Conceptualize.' src={require('../../../../static/illustrations/we_develop.svg')} />
+              <img alt='We Develop.' src={require('../../../../static/illustrations/we_develop.svg')} />
             </div>
               
             <div className={styles['content']}>
@@ -74,7 +74,7 @@ export default class HowWeDoIt extends Component {
 
           <div className={`${styles['row']} ${styles['reverse']}`}>
             <div count={4} className={styles['img-container']}>
-              <img alt='We Conceptualize.' src={require('../../../../static/illustrations/we_test.svg')} />
+              <img alt='We Test.' src={require('../../../../static/illustrations/we_test.svg')} />
             </div>
               
             <div className={styles['content']}>
@@ -92,7 +92,7 @@ export default class HowWeDoIt extends Component {
 
           <div className={styles['row']}>
             <div count={5} className={styles['img-container']}>
-              <img alt='We Conceptualize.' src={require('../../../../static/illustrations/we_revise.svg')} />
+              <img alt='We Revise.' src={require('../../../../static/illustrations/we_revise.svg')} />
             </div>
               
             <div className={styles['content']}>
@@ -110,7 +110,7 @@ export default class HowWeDoIt extends Component {
 
           <div className={`${styles['row']} ${styles['reverse']}`}>
             <div count={6} className={styles['img-container']}>
-              <img alt='We Conceptualize.' src={require('../../../../static/illustrations/we_release.svg')} />
+              <img alt='We Release.' src={require('../../../../static/illustrations/we_release.svg')} />
             </div>
             
             <div className={styles['content']}>
