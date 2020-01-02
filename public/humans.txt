@@ -1,0 +1,42 @@
+                            
+/* TEAM */
+
+                            
+Your title: Avvent Studio.
+
+                            
+Site: https://studio.avvent.io.
+
+                         
+                 
+                        [...]
+						
+
+							
+/* THANKS */
+
+							
+Name: Stephan Burger - Developer.
+
+
+Name: Armin Nel - Designer.
+
+						
+                 
+                        [...]
+                        
+
+                            
+/* SITE */
+
+                            
+Last update: 2020/01/02 
+
+                            
+Standards: HTML5, CSS3, Javascript.
+
+                            
+Components: React, Sass, MobX.
+
+                            
+Software: Figma, VSCode, Trello.
