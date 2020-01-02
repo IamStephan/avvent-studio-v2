@@ -218,7 +218,7 @@ export default class Contact extends Component {
           })
       
           if (!response.ok) {
-            this.props.NotificationStore.AddNotification('error', 'Error', response)
+            this.props.NotificationStore.AddNotification('error', 'Error', JSON.stringify(response))
             setTimeout(() => {
               this.setState({
                 ...this.state,
