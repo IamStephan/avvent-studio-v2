@@ -3,6 +3,10 @@ import { Provider as StoreProvider } from 'mobx-react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
+//Analytics
+import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history'
+
 import ScrollToTop from './components/scrollToTop/scrollToTop';
 import Loader from './components/pageLoader/loader';
 import Sidebar from './components/sidebar/sidebar';
@@ -12,12 +16,14 @@ import AppStore from './stores/appStore'
 import PortfolioStore from './stores/portfolioStore'
 import NotificationStore from './stores/notificationStore';
 
+// Stores
 const stores = {
   AppStore,
   PortfolioStore,
   NotificationStore
 }
 
+// Pages
 const Home = Loadable({
   loader: () => import('./pages/home/home'),
   loading: () => <Loader />
@@ -51,6 +57,16 @@ const Contact = Loadable({
 const NotFound = Loadable({
   loader: () => import('./pages/notFound/notFound'),
   loading: () => <Loader />
+})
+
+// Analytics
+const history = createBrowserHistory()
+
+ReactGA.initialize(process.env.GA_TRACKING_ID)
+
+history.listen(location => {
+  ReactGA.set({ path: location.pathname })
+  ReactGA.pageview(location.pathname)
 })
 
 class App extends Component {
