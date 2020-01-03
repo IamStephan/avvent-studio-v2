@@ -62,7 +62,7 @@ const NotFound = Loadable({
 // Analytics
 const history = createBrowserHistory()
 
-ReactGA.initialize(process.env.GA_TRACKING_ID)
+ReactGA.initialize('UA-155306708-1')
 
 history.listen(location => {
   ReactGA.set({ path: location.pathname })
