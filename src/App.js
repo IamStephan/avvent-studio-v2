@@ -64,8 +64,6 @@ const history = createBrowserHistory()
 
 ReactGA.initialize('UA-155306708-1')
 
-console.log(process.env.GA_TRACKING_ID)
-
 history.listen(location => {
   ReactGA.set({ path: location.pathname })
   ReactGA.pageview(location.pathname)
