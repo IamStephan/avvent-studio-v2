@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Provider as StoreProvider } from 'mobx-react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 //Analytics
@@ -64,17 +64,22 @@ const history = createBrowserHistory()
 
 ReactGA.initialize('UA-155306708-1')
 
+console.log(process.env.GA_TRACKING_ID)
+
 history.listen(location => {
   ReactGA.set({ path: location.pathname })
   ReactGA.pageview(location.pathname)
 })
+
+ReactGA.set({ path: '/' })
+ReactGA.pageview('/')
 
 class App extends Component {
   render() {
     return (
       <Fragment>
         <StoreProvider {...stores}>
-        <Router>
+        <Router history={history}>
           <ScrollToTop />
           <Sidebar />
           <Notifications />
