@@ -69,8 +69,8 @@ history.listen(location => {
   ReactGA.pageview(location.pathname)
 })
 
-ReactGA.set({ path: '/' })
-ReactGA.pageview('/')
+ReactGA.set({ path: window.location.pathname })
+ReactGA.pageview(window.location.pathname)
 
 class App extends Component {
   render() {
