@@ -1,2 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
+
+Sitemap: https://studio.avvent.io/sitemap.xml
 User-agent: *

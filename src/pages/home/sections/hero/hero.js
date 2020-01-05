@@ -39,7 +39,7 @@ export default class Hero extends Component {
             </h1>
 
             <p className={styles['content']}>
-              We are a software development studio that can provide you with world-class applications. With a team motived to only be the best you can be assured you'll only get the best.
+              We are a software development studio that provides you with world-class applications. With a team motivated to only be the best you can be assured you'll only get the best.
             </p>
             
             <div className={styles['actions']}>
