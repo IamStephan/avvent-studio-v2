@@ -36,10 +36,16 @@ export default class Contact extends Component {
       }
     }
 
+    this.setStateAsync = this.setStateAsync.bind(this)
     this.onContactChange = this.onContactChange.bind(this)
     this.clearContact = this.clearContact.bind(this)
     this.onSubmitForm = this.onSubmitForm.bind(this)
-    this.validateEmail = this.validateEmail.bind(this)
+  }
+
+  setStateAsync(state) {
+    return new Promise((resolve) => {
+      this.setState(state, resolve)
+    });
   }
 
   onContactChange(property, value) {
@@ -126,8 +132,10 @@ export default class Contact extends Component {
     })
   }
 
-  onSubmitForm() {
-    this.setState({
+  async onSubmitForm() {
+    let errors = []
+
+    await this.setStateAsync({
       ...this.state,
       contact: {
         ...this.state.contact,
@@ -135,130 +143,125 @@ export default class Contact extends Component {
       }
     })
 
-    setTimeout(async () => {
-      let errors = []
-      if(!this.state.contact.first.value || this.state.contact.first.value.length === 0 || /^\s*$/.test(this.state.contact.first.value)) {
-        this.setState({
-          ...this.state,
-          contact: {
-            ...this.state.contact,
-            first: {
-              ...this.state.contact.first,
-              error: true
-            }
+    if(!this.state.contact.first.value || this.state.contact.first.value.length === 0 || /^\s*$/.test(this.state.contact.first.value)) {
+      await this.setStateAsync({
+        ...this.state,
+        contact: {
+          ...this.state.contact,
+          first: {
+            ...this.state.contact.first,
+            error: true
           }
-        })
+        }
+      })
+      errors.push('First name is invalid.')
+    }
 
-        errors.push('First name is invalid.')
-      }
-      if(!this.state.contact.last.value || this.state.contact.last.value.length === 0 || /^\s*$/.test(this.state.contact.last.value)) {
-        this.setState({
-          ...this.state,
-          contact: {
-            ...this.state.contact,
-            last: {
-              ...this.state.contact.last,
-              error: true
-            }
+    if(!this.state.contact.last.value || this.state.contact.last.value.length === 0 || /^\s*$/.test(this.state.contact.last.value)) {
+      await this.setStateAsync({
+        ...this.state,
+        contact: {
+          ...this.state.contact,
+          last: {
+            ...this.state.contact.last,
+            error: true
           }
-        })
-        errors.push('Last name is invalid.')
-      }
-      if(!this.validateEmail(this.state.contact.email.value)) {
-        this.setState({
-          ...this.state,
-          contact: {
-            ...this.state.contact,
-            email: {
-              ...this.state.contact.email,
-              error: true
-            }
+        }
+      })
+      errors.push('Last name is invalid.')
+    }
+
+    if(!this.validateEmail(this.state.contact.email.value)) {
+      await this.setStateAsync({
+        ...this.state,
+        contact: {
+          ...this.state.contact,
+          email: {
+            ...this.state.contact.email,
+            error: true
           }
-        })
-        errors.push('Email name is invalid.')
-      }
-      if(!this.state.contact.projectDesc.value || this.state.contact.projectDesc.value.length === 0 || /^\s*$/.test(this.state.contact.projectDesc.value)) {
-        this.setState({
-          ...this.state,
-          contact: {
-            ...this.state.contact,
-            projectDesc: {
-              ...this.state.contact.projectDesc,
-              error: true
-            }
+        }
+      })
+      errors.push('Email name is invalid.')
+    }
+    
+    if(!this.state.contact.projectDesc.value || this.state.contact.projectDesc.value.length === 0 || /^\s*$/.test(this.state.contact.projectDesc.value)) {
+      await this.setStateAsync({
+        ...this.state,
+        contact: {
+          ...this.state.contact,
+          projectDesc: {
+            ...this.state.contact.projectDesc,
+            error: true
           }
-        })
-        errors.push('Project description name is invalid.')
+        }
+      })
+      errors.push('Project description name is invalid.')
+    }
+
+    if(errors.length) {
+      this.props.NotificationStore.AddNotification('error', 'From Invalid', errors)
+
+      await this.setStateAsync({
+        ...this.state,
+        contact: {
+          ...this.state.contact,
+          loadingButton: false
+        }
+      })
+    } else {
+      let PostRequest = {
+        body: `${this.state.contact.first.value} ${this.state.contact.last.value}
+        
+        ${this.state.contact.email.value}
+        
+        ${this.state.contact.projectDesc.value}`
       }
 
-      if(errors.length) {
-        this.props.NotificationStore.AddNotification('error', 'From Invalid', errors)
-        setTimeout(() => {
-          this.setState({
+      try{
+        const response = await fetch("https://studio.avvent.io/.netlify/functions/contact", {
+          method: "POST",
+          body: JSON.stringify(PostRequest),
+        })
+      
+        if (!response.ok) {
+          this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
+
+          await this.setStateAsync({
             ...this.state,
             contact: {
               ...this.state.contact,
               loadingButton: false
             }
           })
-        }, 0)
-      } else {
-        let PostRequest = {
-          body: `${this.state.contact.first.value} ${this.state.contact.last.value}
-          
-          ${this.state.contact.email.value}
-          
-          ${this.state.contact.projectDesc.value}`
+          return
         }
 
-        try{
-          const response = await fetch("https://studio.avvent.io/.netlify/functions/contact", {
-            method: "POST",
-            body: JSON.stringify(PostRequest),
-          })
-      
-          if (!response.ok) {
-            this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
-            setTimeout(() => {
-              this.setState({
-                ...this.state,
-                contact: {
-                  ...this.state.contact,
-                  loadingButton: false
-                }
-              })
-            }, 10)
-            return
+        await this.setStateAsync({
+          ...this.state,
+          contact: {
+            ...this.state.contact,
+            loadingButton: false
           }
-
-          setTimeout(() => {
-            this.setState({
-              ...this.state,
-              contact: {
-                ...this.state.contact,
-                loadingButton: false
-              }
-            })
-          }, 10)
-          this.clearContact()
-          this.props.NotificationStore.AddNotification('info', 'Success', 'Your form has been submited, Thank you!')
-          
-        } catch(e){
-          setTimeout(() => {
-            this.setState({
-              ...this.state,
-              contact: {
-                ...this.state.contact,
-                loadingButton: false
-              }
-            })
-          }, 10)
-          this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
-        }
+        })
 
         this.clearContact()
-      } 
-    }, 0)
+        this.props.NotificationStore.AddNotification('info', 'Success', 'Your form has been submited, Thank you!')
+          
+      } catch(e){
+        await this.setStateAsync({
+          ...this.state,
+          contact: {
+            ...this.state.contact,
+            loadingButton: false
+          }
+        })
+        
+        this.props.NotificationStore.AddNotification('error', 'Error', 'Your form has not been submited')
+      }
+
+      this.clearContact()
+    }
   }
 
   validateEmail(email) {

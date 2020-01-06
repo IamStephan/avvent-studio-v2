@@ -17,7 +17,7 @@ export default class Notifications extends Component {
       <div className={`${styles['notification-container']}`}>
         {
           NotificationStore.notifications.map((item, i) => (
-            <div className={styles['notification']}>
+            <div key={i} className={styles['notification']}>
               <div className={styles['icon']}>
                 {
                   item.type === 'info' ? (
