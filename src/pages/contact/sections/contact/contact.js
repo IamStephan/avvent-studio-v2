@@ -212,8 +212,8 @@ export default class Contact extends Component {
     } else {
       let PostRequest = {
         customData: {
-          name: `${this.state.contact.first.value} ${this.state.contact.first.value}`,
-          email: this.state.contact.email,
+          name: `${this.state.contact.first.value} ${this.state.contact.last.value}`,
+          email: this.state.contact.email.value,
           projectDesc: this.state.contact.projectDesc.value
         }
       }
