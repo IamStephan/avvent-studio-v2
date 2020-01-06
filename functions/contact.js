@@ -3,7 +3,7 @@ const sgMail = require('@sendgrid/mail')
 exports.handler =  async (event, context, callback) => {
 
     const payload = JSON.parse(event.body)
-    const { body } = payload
+    const { customData } = payload
 
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
@@ -11,7 +11,12 @@ exports.handler =  async (event, context, callback) => {
         to: 'info@avvent.io',
         from: 'info@avvent.io',
         subject: 'Contact Form Submission',
-        html: body,
+        html: `
+            <h1> ${customData.name} </h1>
+            <h2> ${customData.email} </h2>
+            <hr />
+            <p> ${customData.projectDesc} </p>
+        `,
     };
 
     try{

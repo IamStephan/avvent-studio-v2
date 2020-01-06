@@ -212,11 +212,11 @@ export default class Contact extends Component {
       })
     } else {
       let PostRequest = {
-        body: `${this.state.contact.first.value} ${this.state.contact.last.value}
-        
-        ${this.state.contact.email.value}
-        
-        ${this.state.contact.projectDesc.value}`
+        customData: {
+          name: `${this.state.contact.first.value} ${this.state.contact.first.value}`,
+          email: this.state.contact.email,
+          projectDesc: this.state.contact.projectDesc.value
+        }
       }
 
       try{
