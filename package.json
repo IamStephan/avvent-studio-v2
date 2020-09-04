@@ -14,7 +14,7 @@
     "mobx-react": "^6.1.4",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
-    "react": "^0.0.0-experimental-f42431abe",
+    "react": "^0.14.0",
     "react-dom": "^0.0.0-experimental-f42431abe",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
